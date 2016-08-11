@@ -1,0 +1,25 @@
+{
+  "name": "d3-charts",
+  "version": "0.0.1",
+  "description": "D3 charts",
+  "author": "Tree Xie <vicansocanbico@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vicanso/d3-charts"
+  },
+  "bugs": {
+    "url": "https://github.com/vicanso/d3-charts/issues",
+    "email": "vicansocanbico@gmail.com"
+  },
+  "license": "MIT",
+  "scripts": {},
+  "keywords": [
+    "d3",
+    "circle",
+    "chart",
+    "graph"
+  ],
+  "dependencies": {
+    "d3": "^4.2.1"
+  }
+}
