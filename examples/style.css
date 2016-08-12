@@ -1,0 +1,61 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 50px 0 0 0;
+  font: 15px/1.6 Helvetica, Arial, sans-serif;
+}
+
+section {
+  border-bottom: 1px solid #eee;
+  width: 100%;
+  padding: 75px;
+}
+
+h3 {
+  margin: 0;
+}
+
+p {
+  margin: 0 0 15px 0;
+}
+
+#actions {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-bottom: 1px solid #eee;
+  height: 50px;
+  padding: 0 25px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background: white;
+}
+
+.chart {
+  /*border: 1px dotted #ddd;*/
+}
+
+.chart .background {
+  fill: RGB(230, 237, 244)
+}
+
+.chart .foreground {
+  fill: RGB(0, 181, 241)
+}
+
+.chart .label {
+  fill: RGB(0, 181, 241);
+  font: 18px sans-serif;
+  text-anchor: middle;
+  alignment-baseline: middle;
+}
+
+section:nth-child(3) .chart .label {
+  font: 13px sans-serif;
+}
