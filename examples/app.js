@@ -4,10 +4,11 @@ import Circle from '../lib/circle';
 
 class App extends Component {
   componentDidMount() {
-    this.defaultCircle = new Circle(this.refs.defaultCircle);
+    const circle = new Circle(this.refs.defaultCircle);
     setTimeout(() => {
-      this.defaultCircle.render();
-    }, 5000);
+      // circle.set('startAngle', 0.3 * Math.PI);
+      circle.render(0.2154);
+    }, 500);
   }
   render() {
     return (

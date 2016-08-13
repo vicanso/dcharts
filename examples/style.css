@@ -37,25 +37,3 @@ p {
   background: white;
 }
 
-.chart {
-  /*border: 1px dotted #ddd;*/
-}
-
-.chart .background {
-  fill: RGB(230, 237, 244)
-}
-
-.chart .foreground {
-  fill: RGB(0, 181, 241)
-}
-
-.chart .label {
-  fill: RGB(0, 181, 241);
-  font: 18px sans-serif;
-  text-anchor: middle;
-  alignment-baseline: middle;
-}
-
-section:nth-child(3) .chart .label {
-  font: 13px sans-serif;
-}
