@@ -19,6 +19,10 @@ webpackJsonp([0],{
 
 	var _circle2 = _interopRequireDefault(_circle);
 
+	var _pie = __webpack_require__(183);
+
+	var _pie2 = _interopRequireDefault(_pie);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -39,30 +43,148 @@ webpackJsonp([0],{
 	  _createClass(App, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      var circle = new _circle2.default(this.refs.defaultCircle);
-	      setTimeout(function () {
-	        // circle.set('startAngle', 0.3 * Math.PI);
-	        circle.render(0.2154);
-	      }, 500);
+	      var refs = this.refs;
+	      var defaultCircle = new _circle2.default(refs.defaultCircle);
+	      defaultCircle.render(Math.random());
+
+	      var noneBGCircle = new _circle2.default(refs.noneBGCircle);
+	      noneBGCircle.set('disabled.background', true);
+	      noneBGCircle.render(Math.random());
+
+	      var liveUpdateCircle = new _circle2.default(refs.liveUpdateCircle);
+	      liveUpdateCircle.render(Math.random());
+	      setInterval(function () {
+	        liveUpdateCircle.update(Math.random());
+	      }, 1000);
+
+	      var changeFillColorCircle = new _circle2.default(refs.changeFillColorCircle);
+	      var newColor = 'RGB(67, 67, 72)';
+	      changeFillColorCircle.set('style.foreground.fill', newColor);
+	      changeFillColorCircle.set('style.label.fill', newColor);
+	      changeFillColorCircle.render(Math.random());
+
+	      var thicknessFullFillCircle = new _circle2.default(refs.thicknessFullFillCircle);
+	      thicknessFullFillCircle.set({
+	        'disabled.background': true,
+	        'thickness': '100%',
+	        'style.label.fill': 'RGB(67, 67, 72)'
+	      }).render(Math.random());
+
+	      var defaultPie = new _pie2.default(refs.defaultPie);
+	      defaultPie.render([10, 20, 40]);
+
+	      var maxCountPie = new _pie2.default(refs.maxCountPie);
+	      maxCountPie.render([10, 30]);
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        null,
+	        { style: {
+	            paddingBottom: '20px'
+	          } },
 	        _react2.default.createElement(
-	          'section',
+	          'h2',
 	          null,
+	          'Circle Examples'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'pure-g' },
 	          _react2.default.createElement(
-	            'h3',
-	            null,
-	            'Default Circle'
+	            'section',
+	            { className: 'pure-u-1-4 chartSection' },
+	            _react2.default.createElement(
+	              'h3',
+	              null,
+	              'Default'
+	            ),
+	            _react2.default.createElement('svg', {
+	              ref: 'defaultCircle'
+	            })
 	          ),
-	          _react2.default.createElement('svg', {
-	            className: 'chart',
-	            ref: 'defaultCircle'
-	          })
+	          _react2.default.createElement(
+	            'section',
+	            { className: 'pure-u-1-4 chartSection' },
+	            _react2.default.createElement(
+	              'h3',
+	              null,
+	              'Without Background'
+	            ),
+	            _react2.default.createElement('svg', {
+	              ref: 'noneBGCircle'
+	            })
+	          ),
+	          _react2.default.createElement(
+	            'section',
+	            { className: 'pure-u-1-4 chartSection' },
+	            _react2.default.createElement(
+	              'h3',
+	              null,
+	              'Live Update'
+	            ),
+	            _react2.default.createElement('svg', {
+	              ref: 'liveUpdateCircle'
+	            })
+	          ),
+	          _react2.default.createElement(
+	            'section',
+	            { className: 'pure-u-1-4 chartSection' },
+	            _react2.default.createElement(
+	              'h3',
+	              null,
+	              'Change Fill Color'
+	            ),
+	            _react2.default.createElement('svg', {
+	              ref: 'changeFillColorCircle'
+	            })
+	          ),
+	          _react2.default.createElement(
+	            'section',
+	            { className: 'pure-u-1-4 chartSection' },
+	            _react2.default.createElement(
+	              'h3',
+	              null,
+	              'Thickness Full Fill'
+	            ),
+	            _react2.default.createElement('svg', {
+	              ref: 'thicknessFullFillCircle'
+	            })
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'h2',
+	          null,
+	          'Pie Examples'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'pure-g' },
+	          _react2.default.createElement(
+	            'section',
+	            { className: 'pure-u-1-4 chartSection' },
+	            _react2.default.createElement(
+	              'h3',
+	              null,
+	              'Default'
+	            ),
+	            _react2.default.createElement('svg', {
+	              ref: 'defaultPie'
+	            })
+	          ),
+	          _react2.default.createElement(
+	            'section',
+	            { className: 'pure-u-1-4 chartSection' },
+	            _react2.default.createElement(
+	              'h3',
+	              null,
+	              'Set Max Count'
+	            ),
+	            _react2.default.createElement('svg', {
+	              ref: 'maxCountPie'
+	            })
+	          )
 	        )
 	      );
 	    }
@@ -90,39 +212,25 @@ webpackJsonp([0],{
 
 	var d3 = _interopRequireWildcard(_d);
 
-	var _lodash = __webpack_require__(178);
+	var _lodash = __webpack_require__(177);
 
 	var _ = _interopRequireWildcard(_lodash);
 
-	var _util = __webpack_require__(177);
+	var _chart = __webpack_require__(180);
+
+	var _chart2 = _interopRequireDefault(_chart);
+
+	var _util = __webpack_require__(181);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	var defaults = {
-	  radius: 50,
-	  thickness: 5,
-	  endAngle: 2 * Math.PI,
-	  startAngle: 0,
-	  ease: d3.easeLinear,
-	  duration: 300,
-	  format: d3.format('.' + d3.precisionFixed(0.01) + '%'),
-	  style: {
-	    background: {
-	      fill: 'RGB(230, 237, 244)'
-	    },
-	    foreground: {
-	      fill: 'RGB(0, 181, 241)'
-	    },
-	    label: {
-	      fill: 'RGB(0, 181, 241)',
-	      font: '18px sans-serif',
-	      'text-anchor': 'middle',
-	      'alignment-baseline': 'middle'
-	    }
-	  }
-	};
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var tween = function tween(arc) {
 	  return function (path, angle) {
@@ -137,15 +245,13 @@ webpackJsonp([0],{
 	  };
 	};
 
-	var Circle = function () {
-	  function Circle(target, config) {
+	var Circle = function (_Chart) {
+	  _inherits(Circle, _Chart);
+
+	  function Circle() {
 	    _classCallCheck(this, Circle);
 
-	    if (!target) {
-	      throw new Error('target catn\'t be null');
-	    }
-	    this.target = target;
-	    this.config = Object.assign({}, config, defaults);
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Circle).apply(this, arguments));
 	  }
 
 	  _createClass(Circle, [{
@@ -160,36 +266,36 @@ webpackJsonp([0],{
 	      var startAngle = _config.startAngle;
 	      var endAngle = _config.endAngle;
 	      var style = _config.style;
+	      var disabled = _config.disabled;
 
 
-	      var chart = d3.select(this.target).attr('with', radius * 2).attr('height', radius * 2).append('g').attr('transform', 'translate(' + radius + ', ' + radius + ')');
+	      var chart = d3.select(this.target).attr('width', radius * 2).attr('height', radius * 2).append('g').attr('transform', 'translate(' + radius + ', ' + radius + ')');
 
-	      this.arc = d3.arc().innerRadius(radius - thickness).outerRadius(radius).startAngle(startAngle);
+	      var thicknessWidth = thickness;
+	      if (_.endsWith(thickness, '%')) {
+	        thicknessWidth = parseFloat(thickness) / 100 * radius;
+	      }
 
-	      this.bg = chart.append('path').datum({
-	        endAngle: endAngle
-	      }).attr('d', this.arc);
-	      (0, _util.setStyle)(this.bg, style.background);
+	      this.arc = d3.arc().innerRadius(radius - thicknessWidth).outerRadius(radius).startAngle(startAngle);
+
+	      if (!disabled.background) {
+	        this.bg = chart.append('path').datum({
+	          endAngle: endAngle
+	        }).attr('d', this.arc);
+	        (0, _util.setStyle)(this.bg, style.background);
+	      }
 
 	      this.fg = chart.append('path').datum({
 	        endAngle: 0
 	      }).attr('d', this.arc);
 	      (0, _util.setStyle)(this.fg, style.foreground);
 
-	      this.label = chart.append('text').attr('x', 2).attr('y', 2);
-	      (0, _util.setStyle)(this.label, style.label);
+	      if (!disabled.label) {
+	        this.label = chart.append('text').attr('x', 2).attr('y', 2);
+	        (0, _util.setStyle)(this.label, style.label);
+	      }
 
 	      this.initialized = true;
-	      return this;
-	    }
-	  }, {
-	    key: 'set',
-	    value: function set(k, v) {
-	      if (_.isObject(k)) {
-	        Object.assign(this.config, k);
-	      } else {
-	        _.set(this.config, k, v);
-	      }
 	      return this;
 	    }
 	  }, {
@@ -201,44 +307,35 @@ webpackJsonp([0],{
 	      var format = _config2.format;
 
 	      this.init();
+
 	      this.fg.transition().duration(duration).ease(ease).call(tween(this.arc), 2 * Math.PI * value);
-	      this.label.text(format(value));
+
+	      if (this.label) {
+	        this.label.text(format(value));
+	      }
+
 	      return this;
+	    }
+	  }, {
+	    key: 'update',
+	    value: function update(value) {
+	      return this.render(value);
+	    }
+	  }, {
+	    key: 'name',
+	    get: function get() {
+	      return 'circle';
 	    }
 	  }]);
 
 	  return Circle;
-	}();
+	}(_chart2.default);
 
 	exports.default = Circle;
 
 /***/ },
 
 /***/ 177:
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.setStyle = setStyle;
-
-	var _lodash = __webpack_require__(178);
-
-	var _ = _interopRequireWildcard(_lodash);
-
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-	function setStyle(selection, styles) {
-	  _.forEach(styles, function (v, k) {
-	    return selection.style(k, v);
-	  });
-	}
-
-/***/ },
-
-/***/ 178:
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global, module) {'use strict';var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol?"symbol":typeof obj;};/**
@@ -9551,7 +9648,7 @@ webpackJsonp([0],{
 	lodash.prototype.at=wrapperAt;lodash.prototype.chain=wrapperChain;lodash.prototype.commit=wrapperCommit;lodash.prototype.next=wrapperNext;lodash.prototype.plant=wrapperPlant;lodash.prototype.reverse=wrapperReverse;lodash.prototype.toJSON=lodash.prototype.valueOf=lodash.prototype.value=wrapperValue;// Add lazy aliases.
 	lodash.prototype.first=lodash.prototype.head;if(iteratorSymbol){lodash.prototype[iteratorSymbol]=wrapperToIterator;}return lodash;}/*--------------------------------------------------------------------------*/// Export lodash.
 	var _=runInContext();// Some AMD build optimizers, like r.js, check for condition patterns like:
-	if("function"=='function'&&_typeof(__webpack_require__(180))=='object'&&__webpack_require__(180)){// Expose Lodash on the global object to prevent errors when Lodash is
+	if("function"=='function'&&_typeof(__webpack_require__(179))=='object'&&__webpack_require__(179)){// Expose Lodash on the global object to prevent errors when Lodash is
 	// loaded by a script tag in the presence of an AMD loader.
 	// See http://requirejs.org/docs/errors.html#mismatch for more details.
 	// Use `_.noConflict` to remove Lodash from the global object.
@@ -9562,11 +9659,11 @@ webpackJsonp([0],{
 	(freeModule.exports=_)._=_;// Export for CommonJS support.
 	freeExports._=_;}else{// Export to the global object.
 	root._=_;}}).call(undefined);
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(179)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(178)(module)))
 
 /***/ },
 
-/***/ 179:
+/***/ 178:
 /***/ function(module, exports) {
 
 	"use strict";
@@ -9584,12 +9681,268 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 180:
+/***/ 179:
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {module.exports = __webpack_amd_options__;
 
 	/* WEBPACK VAR INJECTION */}.call(exports, {}))
+
+/***/ },
+
+/***/ 180:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _lodash = __webpack_require__(177);
+
+	var _ = _interopRequireWildcard(_lodash);
+
+	var _defaults = __webpack_require__(182);
+
+	var defaults = _interopRequireWildcard(_defaults);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Chart = function () {
+	  function Chart(target, config) {
+	    _classCallCheck(this, Chart);
+
+	    if (!target) {
+	      throw new Error('target catn\'t be null');
+	    }
+	    this.target = target;
+	    var tmp = _.get(defaults, this.name);
+	    if (tmp) {
+	      this.config = _.assignIn({}, config, _.cloneDeep(tmp));
+	    }
+	  }
+
+	  _createClass(Chart, [{
+	    key: 'set',
+	    value: function set(k, v) {
+	      var _this = this;
+
+	      if (_.isObject(k)) {
+	        _.forEach(k, function (v1, k1) {
+	          return _this.set(k1, v1);
+	        });
+	      } else {
+	        _.set(this.config, k, v);
+	      }
+	      return this;
+	    }
+	  }, {
+	    key: 'get',
+	    value: function get(k) {
+	      return _.get(this.config, k);
+	    }
+	  }]);
+
+	  return Chart;
+	}();
+
+	exports.default = Chart;
+
+/***/ },
+
+/***/ 181:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.setStyle = setStyle;
+
+	var _lodash = __webpack_require__(177);
+
+	var _ = _interopRequireWildcard(_lodash);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+	function setStyle(selection, styles) {
+	  _.forEach(styles, function (v, k) {
+	    return selection.style(k, v);
+	  });
+	}
+
+/***/ },
+
+/***/ 182:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.pie = exports.circle = undefined;
+
+	var _d = __webpack_require__(176);
+
+	var d3 = _interopRequireWildcard(_d);
+
+	var _lodash = __webpack_require__(177);
+
+	var _ = _interopRequireWildcard(_lodash);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+	var circle = exports.circle = {
+	  radius: 50,
+	  thickness: 5,
+	  endAngle: 2 * Math.PI,
+	  startAngle: 0,
+	  ease: d3.easeLinear,
+	  duration: 300,
+	  format: d3.format('.' + d3.precisionFixed(0.01) + '%'),
+	  style: {
+	    background: {
+	      fill: 'RGB(230, 237, 244)'
+	    },
+	    foreground: {
+	      fill: 'RGB(0, 181, 241)'
+	    },
+	    label: {
+	      fill: 'RGB(0, 181, 241)',
+	      font: '18px sans-serif',
+	      'text-anchor': 'middle',
+	      'alignment-baseline': 'middle'
+	    }
+	  },
+	  disabled: {
+	    background: false,
+	    label: false
+	  }
+	};
+
+	var pie = exports.pie = {
+	  radius: 50,
+	  ease: d3.easeLinear,
+	  duration: 300,
+	  backgroundColors: ['RGB(0, 181, 241)', 'RGB(67, 67, 72)', 'RGB(144, 237, 125)', 'RGB(247, 163, 92)', 'RGB(128, 133, 233)', 'RGB(241, 92, 128)']
+	};
+
+/***/ },
+
+/***/ 183:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _d = __webpack_require__(176);
+
+	var d3 = _interopRequireWildcard(_d);
+
+	var _chart = __webpack_require__(180);
+
+	var _chart2 = _interopRequireDefault(_chart);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var tween = function tween(arc) {
+	  return function (path, proportion) {
+	    path.attrTween('d', function (d) {
+	      var i = d3.interpolate(proportion.startAngle, proportion.endAngle);
+	      d.startAngle = proportion.startAngle;
+	      return function (t) {
+	        /* eslint no-param-reassign:0 */
+	        d.endAngle = i(t);
+	        return arc(d);
+	      };
+	    });
+	  };
+	};
+
+	var Pip = function (_Chart) {
+	  _inherits(Pip, _Chart);
+
+	  function Pip() {
+	    _classCallCheck(this, Pip);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Pip).apply(this, arguments));
+	  }
+
+	  _createClass(Pip, [{
+	    key: 'init',
+	    value: function init(arcs) {
+	      var _this2 = this;
+
+	      if (this.initialized) {
+	        return this;
+	      }
+	      var _config = this.config;
+	      var radius = _config.radius;
+	      var backgroundColors = _config.backgroundColors;
+
+
+	      var chart = d3.select(this.target).attr('width', radius * 2).attr('height', radius * 2).append('g').attr('transform', 'translate(' + radius + ', ' + radius + ')');
+	      this.chart = chart;
+
+	      var colorsCount = backgroundColors.length;
+
+	      this.arc = d3.arc().innerRadius(0).outerRadius(radius);
+
+	      this.fgList = _.map(arcs, function (arc, i) {
+	        return chart.append('path').datum(arc).style('fill', backgroundColors[i % colorsCount]).attr('d', _this2.arc);
+	      });
+	      this.initialized = true;
+	      return this;
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render(values) {
+	      var _this3 = this;
+
+	      var arcs = d3.pie()(values);
+	      var _config2 = this.config;
+	      var ease = _config2.ease;
+	      var duration = _config2.duration;
+
+
+	      this.init(arcs);
+
+	      _.forEach(this.fgList, function (fg, i) {
+	        fg.transition().delay(i * duration).duration(duration).ease(ease).call(tween(_this3.arc), arcs[i]);
+	      });
+	      return this;
+	    }
+	  }, {
+	    key: 'name',
+	    get: function get() {
+	      return 'pie';
+	    }
+	  }]);
+
+	  return Pip;
+	}(_chart2.default);
+
+	exports.default = Pip;
 
 /***/ }
 
