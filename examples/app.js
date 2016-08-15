@@ -36,11 +36,40 @@ class App extends Component {
 
 
     const defaultPie = new Pie(refs.defaultPie);
-    defaultPie.render([10, 20, 40]);
+    defaultPie.render([
+      {
+        name: 'safari',
+        value: 18,
+      },
+      {
+        name: 'ie',
+        value: 54,
+      },
+      {
+        name: 'firefox',
+        value: 23,
+      },
+      {
+        name: 'chrome',
+        value: 84,
+      },
+      {
+        name: 'ios-safari',
+        value: 60,
+      },
+      {
+        name: 'uc',
+        value: 30,
+      },
+      {
+        name: 'opera',
+        value: 10,
+      },
+    ]);
+    // defaultPie.render([{10, 20, 40]);
 
-
-    const maxCountPie = new Pie(refs.maxCountPie);
-    maxCountPie.render([10, 30]);
+    // const maxCountPie = new Pie(refs.maxCountPie);
+    // maxCountPie.render([10, 30]);
   }
   render() {
     return (
@@ -48,7 +77,7 @@ class App extends Component {
         paddingBottom: '20px',
       }}>
         <h2>Circle Examples</h2>
-        <div className="pure-g">
+        <div className="pure-g hidden">
           <section className="pure-u-1-4 chartSection">
             <h3>Default</h3>
             <svg

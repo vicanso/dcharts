@@ -8,4 +8,4 @@ app.use(serve(staticPath, {
 }));
 const port = process.env.PORT || 10000;
 app.listen(port);
-console.dir('http://0.0.0.0:' + port + '/index.html');
+console.info('http://0.0.0.0:' + port + '/index.html');

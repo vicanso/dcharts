@@ -14,7 +14,8 @@
   "license": "MIT",
   "scripts": {
     "eslint": "node ./node_modules/.bin/eslint lib/*.js",
-    "watch": "node node_modules/.bin/webpack --progress --colors --watch"
+    "watch": "node node_modules/.bin/webpack --progress --colors --watch -d",
+    "start": "node app"
   },
   "keywords": [
     "d3",
