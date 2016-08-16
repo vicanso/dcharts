@@ -3,6 +3,8 @@ const webpack = require('webpack');
 module.exports = {
   entry: {
     vendor: [
+      "lodash",
+      "eventemitter3",
       "d3",
       "react",
       "react-dom",

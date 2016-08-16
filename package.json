@@ -25,6 +25,7 @@
   ],
   "dependencies": {
     "d3": "^4.2.1",
+    "eventemitter3": "^1.2.0",
     "lodash": "^4.15.0"
   },
   "devDependencies": {
