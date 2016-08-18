@@ -1,8 +1,10 @@
+import * as d3 from 'd3';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Circle from '../lib/circle';
 import Pie from '../lib/pie';
 import Legend from '../lib/legend';
+import Tooltip from '../lib/tooltip';
 import * as defaults from '../lib/defaults';
 
 class App extends Component {
@@ -10,6 +12,14 @@ class App extends Component {
     this.renderLegendView();
     this.renderCircleView();
     this.renderPieView();
+    this.renderTooltip();
+  }
+  renderTooltip() {
+    const refs = this.refs;
+
+    const defaultTooltip = new Tooltip(refs.defaultTooltip);
+    defaultTooltip.render('Google Chrome');
+
   }
   renderPieView() {
     const refs = this.refs;
@@ -134,6 +144,16 @@ class App extends Component {
       <div style={{
         paddingBottom: '20px',
       }}>
+        <h2>Tooltip Examples</h2>
+        <div className="pure-g">
+          <section className="pure-u-1-4 chartSection">
+            <h3>Default</h3>
+            <svg
+              ref="defaultTooltip"
+            >
+            </svg>
+          </section>
+        </div>
         <h2>Legend Examples</h2>
         <div className="pure-g">
           <section className="pure-u-1-4 chartSection">
