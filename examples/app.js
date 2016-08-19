@@ -5,21 +5,35 @@ import Circle from '../lib/circle';
 import Pie from '../lib/pie';
 import Legend from '../lib/legend';
 import Tooltip from '../lib/tooltip';
+import Line from '../lib/line';
 import * as defaults from '../lib/defaults';
 
 class App extends Component {
   componentDidMount() {
-    this.renderLegendView();
-    this.renderCircleView();
-    this.renderPieView();
-    this.renderTooltip();
+    // this.renderLegendView();
+    // this.renderCircleView();
+    // this.renderPieView();
+    // this.renderTooltipView();
+    this.renderLineView();
   }
-  renderTooltip() {
+  renderLineView() {
+    const refs = this.refs;
+
+    const defaultLine = new Line(refs.defaultLine);
+    defaultLine.render([
+      {date: 1, value: 10},
+      {date: 30, value: 95.35},
+      {date: 60, value: 20},
+      {date: 90, value: 30},
+      {date: 130, value: 80},
+      {date: 180, value: 5},
+    ]);
+  }
+  renderTooltipView() {
     const refs = this.refs;
 
     const defaultTooltip = new Tooltip(refs.defaultTooltip);
     defaultTooltip.render('Google Chrome');
-
   }
   renderPieView() {
     const refs = this.refs;
@@ -236,6 +250,16 @@ class App extends Component {
             <h3>Default</h3>
             <svg
               ref="defaultPie"
+            >
+            </svg>
+          </section>
+        </div>
+        <h2>Line Examples</h2>
+        <div className="pure-g">
+          <section className="pure-u-1-4 chartSection">
+            <h3>Default</h3>
+            <svg
+              ref="defaultLine"
             >
             </svg>
           </section>
