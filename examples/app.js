@@ -6,6 +6,7 @@ import Pie from '../lib/pie';
 import Legend from '../lib/legend';
 import Tooltip from '../lib/tooltip';
 import Line from '../lib/line';
+import Axis from '../lib/axis';
 import * as defaults from '../lib/defaults';
 
 class App extends Component {
@@ -14,7 +15,43 @@ class App extends Component {
     // this.renderCircleView();
     // this.renderPieView();
     // this.renderTooltipView();
-    this.renderLineView();
+    // this.renderLineView();
+    this.renderAxisView();
+  }
+  renderAxisView() {
+    const refs = this.refs;
+
+    const defaultAxis = new Axis(refs.defaultAxis);
+    defaultAxis.render([
+      '2015-01-02',
+      '2015-01-03',
+      '2015-01-04',
+      '2015-01-05',
+      '2015-01-06',
+      '2015-01-07',
+      '2015-01-08',
+      '2015-01-09',
+      '2015-01-10',
+      '2015-01-11',
+      '2015-01-12',
+    ]);
+
+    const customDistanceAxis = new Axis(refs.customDistanceAxis);
+    customDistanceAxis.set('distance', 30)
+      .render([
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'Mar',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec',
+      ]);
   }
   renderLineView() {
     const refs = this.refs;
@@ -164,6 +201,23 @@ class App extends Component {
             <h3>Default</h3>
             <svg
               ref="defaultTooltip"
+            >
+            </svg>
+          </section>
+        </div>
+        <h2>Axis Examples</h2>
+        <div className="pure-g">
+          <section className="pure-u-1-4 chartSection">
+            <h3>Default</h3>
+            <svg
+              ref="defaultAxis"
+            >
+            </svg>
+          </section>
+          <section className="pure-u-1-4 chartSection">
+            <h3>Custom Distance</h3>
+            <svg
+              ref="customDistanceAxis"
             >
             </svg>
           </section>
