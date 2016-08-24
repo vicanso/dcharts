@@ -11,11 +11,11 @@ import * as defaults from '../lib/defaults';
 
 class App extends Component {
   componentDidMount() {
-    // this.renderLegendView();
-    // this.renderCircleView();
-    // this.renderPieView();
-    // this.renderTooltipView();
-    // this.renderLineView();
+    this.renderLegendView();
+    this.renderCircleView();
+    this.renderPieView();
+    this.renderTooltipView();
+    this.renderLineView();
     this.renderAxisView();
   }
   renderAxisView() {
@@ -37,7 +37,7 @@ class App extends Component {
     ]);
 
     const customDistanceAxis = new Axis(refs.customDistanceAxis);
-    customDistanceAxis.set('distance', 30)
+    customDistanceAxis.set('horizontal.distance', 30)
       .render([
         'Jan',
         'Feb',
@@ -51,6 +51,17 @@ class App extends Component {
         'Oct',
         'Nov',
         'Dec',
+      ]);
+
+    const verticalAxis = new Axis(refs.verticalAxis);
+    verticalAxis.set('type', 'vertical')
+      .render([
+        10,
+        20,
+        30,
+        40,
+        50,
+        60,
       ]);
   }
   renderLineView() {
@@ -218,6 +229,13 @@ class App extends Component {
             <h3>Custom Distance</h3>
             <svg
               ref="customDistanceAxis"
+            >
+            </svg>
+          </section>
+          <section className="pure-u-1-4 chartSection">
+            <h3>Vertical</h3>
+            <svg
+              ref="verticalAxis"
             >
             </svg>
           </section>
