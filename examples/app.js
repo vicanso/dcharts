@@ -63,6 +63,21 @@ class App extends Component {
         50,
         60,
       ]);
+    let index = 0;
+    const getArr = () => {
+      const arr = [];
+      for (let i = 0; i < 5; i++) {
+        arr.push(++index);
+      }
+      return arr;
+    }
+    const liveUpdateAxis = new Axis(refs.liveUpdateAxis);
+    liveUpdateAxis
+      .set('horizontal.distance', 40)
+      .render(getArr());
+    setInterval(() => {
+      liveUpdateAxis.update(getArr());
+    }, 2000);
   }
   renderLineView() {
     const refs = this.refs;
@@ -236,6 +251,13 @@ class App extends Component {
             <h3>Vertical</h3>
             <svg
               ref="verticalAxis"
+            >
+            </svg>
+          </section>
+          <section className="pure-u-1-4 chartSection">
+            <h3>Live Update</h3>
+            <svg
+              ref="liveUpdateAxis"
             >
             </svg>
           </section>
