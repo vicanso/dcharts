@@ -83,13 +83,35 @@ class App extends Component {
     const refs = this.refs;
 
     const defaultLine = new Line(refs.defaultLine);
+
+    defaultLine.set('xAxis.categories', [
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec'
+    ]);
+
     defaultLine.render([
-      {date: 1, value: 10},
-      {date: 30, value: 95.35},
-      {date: 60, value: 20},
-      {date: 90, value: 30},
-      {date: 130, value: 80},
-      {date: 180, value: 5},
+      {
+        name: 'Chrome',
+        data: [8.2, 7.8, 9.3, 10.5, 12.1, 13.8, 16.7, 19.3, 20.2, 25.4, 20.1, 15.4],
+      },
+      {
+        name: 'Safari',
+        data: [-1.5, -0.6, 2, 3.5, 4.8, 5.2, 8.3, 10.9, 12.5, 15.8, 13.2, 10.1],
+      },
+      {
+        name: 'Firefox',
+        data: [3.5, 4.8, 5.9, 7.2, 10.1, 11.5, 13.2, 16.3, 18.1, 20.3, 22.3, 25.4],
+      },
     ]);
   }
   renderTooltipView() {
@@ -350,7 +372,7 @@ class App extends Component {
         </div>
         <h2>Line Examples</h2>
         <div className="pure-g">
-          <section className="pure-u-1-4 chartSection">
+          <section className="pure-u-1-2 chartSection">
             <h3>Default</h3>
             <svg
               ref="defaultLine"
