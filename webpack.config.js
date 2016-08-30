@@ -8,6 +8,7 @@ module.exports = {
       "d3",
       "react",
       "react-dom",
+      "react-enroute",
     ],
     app: "./examples/app.js",
   },
