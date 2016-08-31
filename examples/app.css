@@ -16,8 +16,8 @@ h2 {
 }
 .chartsContainer .chart{
   display: block;
-  height: 250px;
-  line-height: 250px;
+  height: 180px;
+  line-height: 180px;
   text-align: center;
   text-decoration: none;
   color: #333;

@@ -25,7 +25,7 @@ export default class LineView extends Component {
     defaultLine.render([
       {
         name: 'Chrome',
-        data: [8.2, 7.8, 9.3, 10.5, 12.1, 13.8, 16.7, 19.3, 20.2, 25.4, 20.1, 15.4],
+        data: [8.2, 7.8, 9.3, 10.5, 12.1, 13.8, 16.7, 25.3, 20.2, 18.4, 17.1, 15.4],
       },
       {
         name: 'Safari',
@@ -33,14 +33,14 @@ export default class LineView extends Component {
       },
       {
         name: 'Firefox',
-        data: [3.5, 4.8, 5.9, 7.2, 10.1, 11.5, 13.2, 16.3, 18.1, 20.3, 22.3, 25.4],
+        data: [3.5, 4.8, 5.9, 7.2, 10.1, 11.5, 13.2, 16.3, 18.1, 20.3, 17.3, 15.4],
       },
     ]);
   }
   render() {
     return (
       <div className="legendCotainer pure-g">
-        <h2 className="pure-u-1">Pie Examples</h2>
+        <h2 className="pure-u-1">Line Examples</h2>
         <section className="pure-u-1-2 chartSection">
           <h3>Default</h3>
           <svg

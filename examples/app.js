@@ -66,7 +66,7 @@ class App extends Component {
     };
     const arr = _.map(['Axis', 'Legend', 'Circle', 'Pie', 'Line'], name => (
       <div
-        className="pure-u-1-4"
+        className="pure-u-1-6"
         key={name}
       >
         <a
