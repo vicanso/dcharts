@@ -66,7 +66,7 @@ class App extends Component {
     };
     const arr = _.map(['Axis', 'Legend', 'Circle', 'Pie', 'Line'], name => (
       <div
-        className="pure-u-1-6"
+        className="pure-u-1-5"
         key={name}
       >
         <a
@@ -92,32 +92,34 @@ class App extends Component {
   render() {
     const { state } = this;
     return (
-      <Router {...state}>
-        <Route
-          path="/legend"
-          component={() => this.renderLegendView()}
-        />
-        <Route
-          path="/axis"
-          component={() => this.renderAxisView()}
-        />
-        <Route
-          path="/circle"
-          component={() => this.renderCircleView()}
-        />
-        <Route
-          path="/pie"
-          component={() => this.renderPieView()}
-        />
-        <Route
-          path="/line"
-          component={() => this.renderLineView()}
-        />
-        <Route
-          path="*"
-          component={() => this.renderChartList()}
-        />
-      </Router>
+      <div>
+        <Router {...state}>
+          <Route
+            path="/legend"
+            component={() => this.renderLegendView()}
+          />
+          <Route
+            path="/axis"
+            component={() => this.renderAxisView()}
+          />
+          <Route
+            path="/circle"
+            component={() => this.renderCircleView()}
+          />
+          <Route
+            path="/pie"
+            component={() => this.renderPieView()}
+          />
+          <Route
+            path="/line"
+            component={() => this.renderLineView()}
+          />
+          <Route
+            path="*"
+            component={() => this.renderChartList()}
+          />
+        </Router>
+      </div>
     );
   }
 }

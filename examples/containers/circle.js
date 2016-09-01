@@ -14,7 +14,7 @@ export default class CircleView extends Component {
 
     const liveUpdateCircle = new Circle(refs.liveUpdateCircle);
     liveUpdateCircle.render(Math.random());
-    setInterval(() => {
+    this.timer = setInterval(() => {
       liveUpdateCircle.update(Math.random());
     }, 1000);
 
@@ -39,6 +39,9 @@ export default class CircleView extends Component {
       endAngle: Math.PI / 2,
       thickness: 20,
     }).render(0.432);
+  }
+  componentWillUnmount() {
+    clearInterval(this.timer);
   }
   render() {
     return (

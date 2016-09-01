@@ -45,11 +45,14 @@ export default class LegendView extends Component {
     let disabledIndex = -1;
     orderDisableLegend.set('type', 'column')
       .render(mobileBrowserList);
-    setInterval(() => {
+    this.timer = setInterval(() => {
       orderDisableLegend.enable(disabledIndex);
       disabledIndex = (disabledIndex + 1) % mobileBrowserList.length;
       orderDisableLegend.disable(disabledIndex )
     }, 1000);
+  }
+  componentWillUnmount() {
+    clearInterval(this.timer);
   }
   render() {
     return (

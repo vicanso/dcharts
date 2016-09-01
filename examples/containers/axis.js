@@ -59,9 +59,25 @@ export default class AxisView extends Component {
     liveUpdateAxis
       .set('horizontal.distance', 40)
       .render(getArr());
-    setInterval(() => {
+    this.timer = setInterval(() => {
       liveUpdateAxis.update(getArr());
     }, 2000);
+
+    const alignLeftAxis = new Axis(refs.alignLeftAxis);
+    alignLeftAxis
+      .set('horizontal.distance', 40)
+      .set('horizontal.align', 'left')
+      .render([
+        '09-01',
+        '09-02',
+        '09-03',
+        '09-04',
+        '09-05',
+        '09-06',
+      ]);
+  }
+  componentWillUnmount() {
+    clearInterval(this.timer);
   }
   render() {
     return (
@@ -92,6 +108,13 @@ export default class AxisView extends Component {
           <h3>Live Update</h3>
           <svg
             ref="liveUpdateAxis"
+          >
+          </svg>
+        </section>
+        <section className="pure-u-1-4 chartSection">
+          <h3>Align Left</h3>
+          <svg
+            ref="alignLeftAxis"
           >
           </svg>
         </section>

@@ -33,7 +33,7 @@ export default class LineView extends Component {
       },
       {
         name: 'Firefox',
-        data: [3.5, 4.8, 5.9, 7.2, 10.1, 11.5, 13.2, 16.3, 18.1, 20.3, 17.3, 15.4],
+        data: [3.5, 4.8, 5.9, 7.2, 10.1, 11.5, 13.2, 16.3, 18.1, 20.3, 17.3, 12.4],
       },
     ]);
   }
@@ -41,7 +41,7 @@ export default class LineView extends Component {
     return (
       <div className="legendCotainer pure-g">
         <h2 className="pure-u-1">Line Examples</h2>
-        <section className="pure-u-1-2 chartSection">
+        <section className="pure-u-1-3 chartSection">
           <h3>Default</h3>
           <svg
             ref="defaultLine"
