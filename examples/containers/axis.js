@@ -7,6 +7,7 @@ export default class AxisView extends Component {
 
     const defaultAxis = new Axis(refs.defaultAxis);
     defaultAxis.render([
+      '2015-01-01',
       '2015-01-02',
       '2015-01-03',
       '2015-01-04',
@@ -18,63 +19,64 @@ export default class AxisView extends Component {
       '2015-01-10',
       '2015-01-11',
       '2015-01-12',
+      '2015-01-13',
     ]);
 
-    const customDistanceAxis = new Axis(refs.customDistanceAxis);
-    customDistanceAxis.set('horizontal.distance', 30)
-      .render([
-        'Jan',
-        'Feb',
-        'Mar',
-        'Apr',
-        'Mar',
-        'Jun',
-        'Jul',
-        'Aug',
-        'Sep',
-        'Oct',
-        'Nov',
-        'Dec',
-      ]);
+    // const customDistanceAxis = new Axis(refs.customDistanceAxis);
+    // customDistanceAxis.set('horizontal.distance', 30)
+    //   .render([
+    //     'Jan',
+    //     'Feb',
+    //     'Mar',
+    //     'Apr',
+    //     'Mar',
+    //     'Jun',
+    //     'Jul',
+    //     'Aug',
+    //     'Sep',
+    //     'Oct',
+    //     'Nov',
+    //     'Dec',
+    //   ]);
 
-    const verticalAxis = new Axis(refs.verticalAxis);
-    verticalAxis.set('type', 'vertical')
-      .render([
-        10,
-        20,
-        30,
-        40,
-        50,
-        60,
-      ]);
-    let index = 0;
-    const getArr = () => {
-      const arr = [];
-      for (let i = 0; i < 5; i++) {
-        arr.push(++index);
-      }
-      return arr;
-    }
-    const liveUpdateAxis = new Axis(refs.liveUpdateAxis);
-    liveUpdateAxis
-      .set('horizontal.distance', 40)
-      .render(getArr());
-    this.timer = setInterval(() => {
-      liveUpdateAxis.update(getArr());
-    }, 2000);
+    // const verticalAxis = new Axis(refs.verticalAxis);
+    // verticalAxis.set('type', 'vertical')
+    //   .render([
+    //     10,
+    //     20,
+    //     30,
+    //     40,
+    //     50,
+    //     60,
+    //   ]);
+    // let index = 0;
+    // const getArr = () => {
+    //   const arr = [];
+    //   for (let i = 0; i < 5; i++) {
+    //     arr.push(++index);
+    //   }
+    //   return arr;
+    // }
+    // const liveUpdateAxis = new Axis(refs.liveUpdateAxis);
+    // liveUpdateAxis
+    //   .set('horizontal.distance', 40)
+    //   .render(getArr());
+    // this.timer = setInterval(() => {
+    //   liveUpdateAxis.update(getArr());
+    // }, 2000);
 
-    const alignLeftAxis = new Axis(refs.alignLeftAxis);
-    alignLeftAxis
-      .set('horizontal.distance', 40)
-      .set('horizontal.align', 'left')
-      .render([
-        '09-01',
-        '09-02',
-        '09-03',
-        '09-04',
-        '09-05',
-        '09-06',
-      ]);
+    // const alignLeftAxis = new Axis(refs.alignLeftAxis);
+    // alignLeftAxis
+    //   .set('horizontal.distance', 40)
+    //   .set('horizontal.align', 'left')
+    //   .render([
+    //     '09-01',
+    //     '09-02',
+    //     '09-03',
+    //     '09-04',
+    //     '09-05',
+    //     '09-06',
+    //   ]);
   }
   componentWillUnmount() {
     clearInterval(this.timer);
