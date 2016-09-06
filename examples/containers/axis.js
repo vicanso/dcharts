@@ -22,64 +22,74 @@ export default class AxisView extends Component {
       '2015-01-13',
     ]);
 
-    // const customDistanceAxis = new Axis(refs.customDistanceAxis);
-    // customDistanceAxis.set('horizontal.distance', 30)
-    //   .render([
-    //     'Jan',
-    //     'Feb',
-    //     'Mar',
-    //     'Apr',
-    //     'Mar',
-    //     'Jun',
-    //     'Jul',
-    //     'Aug',
-    //     'Sep',
-    //     'Oct',
-    //     'Nov',
-    //     'Dec',
-    //   ]);
+    const customDistanceAxis = new Axis(refs.customDistanceAxis);
+    customDistanceAxis.set('horizontal.distance', 30)
+      .render([
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec',
+      ]);
 
-    // const verticalAxis = new Axis(refs.verticalAxis);
-    // verticalAxis.set('type', 'vertical')
-    //   .render([
-    //     10,
-    //     20,
-    //     30,
-    //     40,
-    //     50,
-    //     60,
-    //   ]);
-    // let index = 0;
-    // const getArr = () => {
-    //   const arr = [];
-    //   for (let i = 0; i < 5; i++) {
-    //     arr.push(++index);
-    //   }
-    //   return arr;
-    // }
-    // const liveUpdateAxis = new Axis(refs.liveUpdateAxis);
-    // liveUpdateAxis
-    //   .set('horizontal.distance', 40)
-    //   .render(getArr());
-    // this.timer = setInterval(() => {
-    //   liveUpdateAxis.update(getArr());
-    // }, 2000);
+    const verticalAxis = new Axis(refs.verticalAxis);
+    verticalAxis.set('type', 'vertical')
+      .render([
+        10,
+        20,
+        30,
+        40,
+        50,
+        60,
+        70,
+        80,
+        90,
+        100,
+      ]);
 
-    // const alignLeftAxis = new Axis(refs.alignLeftAxis);
-    // alignLeftAxis
-    //   .set('horizontal.distance', 40)
-    //   .set('horizontal.align', 'left')
-    //   .render([
-    //     '09-01',
-    //     '09-02',
-    //     '09-03',
-    //     '09-04',
-    //     '09-05',
-    //     '09-06',
-    //   ]);
+    let index = 0;
+    const getArr = () => {
+      const arr = [];
+      for (let i = 0; i < 5; i++) {
+        arr.push(++index);
+      }
+      return arr;
+    }
+    const liveUpdateAxis = new Axis(refs.liveUpdateAxis);
+    liveUpdateAxis
+      .set('horizontal.distance', 40)
+      .render(getArr());
+    this.updateTimer = setInterval(() => {
+      liveUpdateAxis.update(getArr());
+    }, 2000);
+
+
+    const increasePointAxis = new Axis(refs.increasePoint);
+    const arr = [
+      1,
+      2,
+      3,
+      4,
+      5,
+    ];
+    increasePointAxis.render(arr);
+    this.increaseTimer = setInterval(() => {
+      arr.push(_.last(arr) + 1);
+      console.dir(arr);
+      increasePointAxis.update(arr);
+    }, 2000);
+
   }
   componentWillUnmount() {
-    clearInterval(this.timer);
+    clearInterval(this.updateTimer);
+    clearInterval(this.increaseTimer);
   }
   render() {
     return (
@@ -89,6 +99,9 @@ export default class AxisView extends Component {
           <h3>Default</h3>
           <svg
             ref="defaultAxis"
+            style={{
+              margin: '30px',
+            }}
           >
           </svg>
         </section>
@@ -96,6 +109,9 @@ export default class AxisView extends Component {
           <h3>Custom Distance</h3>
           <svg
             ref="customDistanceAxis"
+            style={{
+              margin: '30px',
+            }}
           >
           </svg>
         </section>
@@ -103,20 +119,30 @@ export default class AxisView extends Component {
           <h3>Vertical</h3>
           <svg
             ref="verticalAxis"
+            style={{
+              margin: '30px',
+              height: '350px',
+            }}
           >
           </svg>
         </section>
         <section className="pure-u-1-4 chartSection">
           <h3>Live Update</h3>
           <svg
+            style={{
+              margin: '30px',
+            }}
             ref="liveUpdateAxis"
           >
           </svg>
         </section>
         <section className="pure-u-1-4 chartSection">
-          <h3>Align Left</h3>
+          <h3>Increase Point</h3>
           <svg
-            ref="alignLeftAxis"
+            style={{
+              margin: '30px',
+            }}
+            ref="increasePoint"
           >
           </svg>
         </section>
