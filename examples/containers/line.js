@@ -19,8 +19,8 @@ export default class LineView extends Component {
       'Sep',
       'Oct',
       'Nov',
-      'Dec'
-    ]);
+      'Dec',
+    ]).set('title.text', 'Browser List');
 
     defaultLine.render([
       {
@@ -42,7 +42,6 @@ export default class LineView extends Component {
       <div className="legendCotainer pure-g">
         <h2 className="pure-u-1">Line Examples</h2>
         <section className="pure-u-1-3 chartSection">
-          <h3>Default</h3>
           <svg
             ref="defaultLine"
           >
