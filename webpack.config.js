@@ -9,6 +9,7 @@ module.exports = {
       "react",
       "react-dom",
       "react-enroute",
+      "moment",
     ],
     app: "./examples/app.js",
   },

@@ -82,7 +82,6 @@ export default class AxisView extends Component {
     increasePointAxis.render(arr);
     this.increaseTimer = setInterval(() => {
       arr.push(_.last(arr) + 1);
-      console.dir(arr);
       increasePointAxis.update(arr);
     }, 2000);
 
