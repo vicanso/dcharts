@@ -18,6 +18,7 @@
     "watch": "node node_modules/.bin/webpack --progress --colors --watch -d",
     "start": "node app"
   },
+  "main": "./index",
   "keywords": [
     "d3",
     "circle",

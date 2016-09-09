@@ -14,6 +14,7 @@ import AxisView from './containers/axis';
 import CircleView from './containers/circle';
 import PieView from './containers/pie';
 import LineView from './containers/line';
+import BarView from './containers/bar';
 
 class App extends Component {
   constructor(props) {
@@ -55,6 +56,12 @@ class App extends Component {
       />
     );
   }
+  renderBarView() {
+    return (
+      <BarView
+      />
+    );
+  }
   renderChartList() {
     const goTo = (e, name) => {
       e.preventDefault();
@@ -64,7 +71,7 @@ class App extends Component {
         location: url,
       });
     };
-    const arr = _.map(['Axis', 'Legend', 'Circle', 'Pie', 'Line'], name => (
+    const arr = _.map(['Axis', 'Legend', 'Circle', 'Pie', 'Line', 'Bar'], name => (
       <div
         className="pure-u-1-5"
         key={name}
@@ -113,6 +120,10 @@ class App extends Component {
           <Route
             path="/line"
             component={() => this.renderLineView()}
+          />
+          <Route
+            path="/bar"
+            component={() => this.renderBarView()}
           />
           <Route
             path="*"

@@ -22,6 +22,18 @@ export default class AxisView extends Component {
       '2015-01-13',
     ]);
 
+    const alignCenterAxis = new Axis(refs.alignCenterAxis);
+
+    alignCenterAxis
+      .set('horizontal.align', 'center')
+      .render([
+        10,
+        20,
+        30,
+        40,
+        50,
+      ]);
+
     const customDistanceAxis = new Axis(refs.customDistanceAxis);
     customDistanceAxis.set('horizontal.distance', 30)
       .render([
@@ -108,6 +120,16 @@ export default class AxisView extends Component {
           <h3>Custom Distance</h3>
           <svg
             ref="customDistanceAxis"
+            style={{
+              margin: '30px',
+            }}
+          >
+          </svg>
+        </section>
+        <section className="pure-u-1-4 chartSection">
+          <h3>Align Center</h3>
+          <svg
+            ref="alignCenterAxis"
             style={{
               margin: '30px',
             }}
