@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import moment from 'moment';
+import * as _ from 'lodash';
 import { Bar } from '../..';
 
 export default class BarView extends Component {
@@ -35,6 +37,41 @@ export default class BarView extends Component {
         data: [3.5, 4.8, 5.9, 7.2, 10.1, 11.5, 13.2, 16.3, 18.1, 20.3, 17.3, 12.4],
       },
     ]);
+
+    const liveUpdateBar = new Bar(refs.liveUpdateLine);
+    let date = moment().add(-365, 'day');
+    const dateList = [date.format('MM-DD')];
+    const dataList = [
+      {
+        name: 'GZ',
+        data: [_.random(3, 5)],
+      },
+      {
+        name: 'CH',
+        data: [_.random(3, 5)],
+      },
+      {
+        name: 'SZ',
+        data: [_.random(3, 5)],
+      },
+    ];
+    for (let i = 0; i < 10; i++) {
+      date = date.add(1, 'day');
+      dateList.push(date.format('MM-DD'));
+      _.forEach(dataList, item => item.data.push(_.last(item.data) + _.random(0, 5)));
+    }
+    liveUpdateBar.set('title.text', '降雨量')
+      .set('xAxis.categories', dateList);
+    liveUpdateBar.render(dataList);
+    this.updateTimer = setInterval(() => {
+      date = date.add(1, 'day');
+      dateList.push(date.format('MM-DD'));
+      _.forEach(dataList, item => item.data.push(_.last(item.data) + _.random(0, 5)));
+      liveUpdateBar.update(dateList, dataList);
+    }, 5000);
+  }
+  componentWillUnmount() {
+    clearInterval(this.updateTimer);
   }
   render() {
     return (
@@ -44,6 +81,13 @@ export default class BarView extends Component {
         <h3>Default</h3>
         <svg
           ref="defaultBar"
+        >
+        </svg>
+      </section>
+      <section className="pure-u-1-2 chartSection">
+        <h3>Live Update</h3>
+        <svg
+          ref="liveUpdateLine"
         >
         </svg>
       </section>
