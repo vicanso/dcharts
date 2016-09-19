@@ -65,7 +65,7 @@ class App extends Component {
   renderChartList() {
     const goTo = (e, name) => {
       e.preventDefault();
-      const url = `/${name.toLowerCase()}`;
+      const url = `/dev/${name.toLowerCase()}`;
       history.pushState({}, name, url);
       this.setState({
         location: url,
@@ -102,31 +102,31 @@ class App extends Component {
       <div>
         <Router {...state}>
           <Route
-            path="/legend"
+            path="/dev/legend"
             component={() => this.renderLegendView()}
           />
           <Route
-            path="/axis"
+            path="/dev/axis"
             component={() => this.renderAxisView()}
           />
           <Route
-            path="/circle"
+            path="/dev/circle"
             component={() => this.renderCircleView()}
           />
           <Route
-            path="/pie"
+            path="/dev/pie"
             component={() => this.renderPieView()}
           />
           <Route
-            path="/line"
+            path="/dev/line"
             component={() => this.renderLineView()}
           />
           <Route
-            path="/bar"
+            path="/dev/bar"
             component={() => this.renderBarView()}
           />
           <Route
-            path="*"
+            path="/dev"
             component={() => this.renderChartList()}
           />
         </Router>

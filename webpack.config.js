@@ -11,7 +11,7 @@ module.exports = {
       "react-enroute",
       "moment",
     ],
-    app: "./examples/app.js",
+    dev: "./examples/dev.js",
   },
   output: {
     path: __dirname + '/examples',

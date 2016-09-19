@@ -5,7 +5,7 @@ export default class PieView extends Component {
   componentDidMount() {
     const refs = this.refs;
     const defaultPie = new Pie(refs.defaultPie);
-
+    defaultPie.set('title.text', 'Browsers');
     defaultPie.render([
       {
         name: 'IE',
@@ -40,6 +40,9 @@ export default class PieView extends Component {
         <section className="pure-u-1-4 chartSection">
           <h3>Default</h3>
           <svg
+            style={{
+              width: '100%',
+            }}
             ref="defaultPie"
           >
           </svg>

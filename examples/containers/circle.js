@@ -6,10 +6,12 @@ export default class CircleView extends Component {
     const refs = this.refs;
 
     const defaultCircle = new Circle(refs.defaultCircle);
+    defaultCircle.set('title.text', 'CPU Usage');
     defaultCircle.render(0.543);
 
     const noneBGCircle = new Circle(refs.noneBGCircle);
-    noneBGCircle.set('disabled.background', true);
+    noneBGCircle
+      .set('disabled.background', true)
     noneBGCircle.render(0.6184);
 
     const liveUpdateCircle = new Circle(refs.liveUpdateCircle);
