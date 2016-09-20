@@ -22,7 +22,9 @@ export default class LineView extends Component {
       'Oct',
       'Nov',
       'Dec',
-    ]).set('title.text', 'Browser List');
+    ]).set('title.text', 'Browser List')
+    .set('yAxis.width', 40)
+    .set('yAxis.title.text', 'Accounting(%)');
 
     defaultLine.render([
       {
@@ -79,14 +81,12 @@ export default class LineView extends Component {
       <div className="legendCotainer pure-g">
         <h2 className="pure-u-1">Line Examples</h2>
         <section className="pure-u-1-2 chartSection">
-          <h3>Default</h3>
           <svg
             ref="defaultLine"
           >
           </svg>
         </section>
         <section className="pure-u-1-2 chartSection">
-          <h3>Live Update</h3>
           <svg
             ref="liveUpdateLine"
           >

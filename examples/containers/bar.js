@@ -21,7 +21,9 @@ export default class BarView extends Component {
       'Oct',
       'Nov',
       'Dec',
-    ]).set('title.text', 'Browser List');
+    ]).set('title.text', 'Browser List')
+    .set('yAxis.width', 40)
+    .set('yAxis.title.text', 'Accounting(%)');
 
     defaultBar.render([
       {
@@ -78,14 +80,12 @@ export default class BarView extends Component {
       <div className="stackCotainer pure-g">
       <h2 className="pure-u-1">Bar Examples</h2>
       <section className="pure-u-1-2 chartSection">
-        <h3>Default</h3>
         <svg
           ref="defaultBar"
         >
         </svg>
       </section>
       <section className="pure-u-1-2 chartSection">
-        <h3>Live Update</h3>
         <svg
           ref="liveUpdateLine"
         >

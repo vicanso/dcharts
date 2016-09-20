@@ -54,16 +54,16 @@ export default class AxisView extends Component {
     const verticalAxis = new Axis(refs.verticalAxis);
     verticalAxis.set('type', 'vertical')
       .render([
-        10,
-        20,
-        30,
-        40,
-        50,
-        60,
-        70,
-        80,
-        90,
-        100,
+        10 * 1000,
+        20 * 1000,
+        30 * 1000,
+        40 * 1000,
+        50 * 1000,
+        60 * 1000,
+        70 * 1000,
+        80 * 1000,
+        90 * 1000,
+        100 * 1000,
       ]);
 
     let index = 0;
