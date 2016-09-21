@@ -1,14 +1,14 @@
 {
-  "name": "d3-charts",
+  "name": "dcharts",
   "version": "0.0.1",
-  "description": "D3 charts",
+  "description": "A powerful charting and visualization library, is based on d3",
   "author": "Tree Xie <vicansocanbico@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/vicanso/d3-charts"
+    "url": "https://github.com/vicanso/dcharts"
   },
   "bugs": {
-    "url": "https://github.com/vicanso/d3-charts/issues",
+    "url": "https://github.com/vicanso/dcharts/issues",
     "email": "vicansocanbico@gmail.com"
   },
   "license": "MIT",
@@ -16,19 +16,19 @@
     "eslint": "node ./node_modules/.bin/eslint lib/*.js",
     "test": "npm run eslint",
     "watch": "node node_modules/.bin/webpack --progress --colors --watch -d",
+    "build": "node node_modules/.bin/webpack --progress",
     "start": "node app"
   },
   "main": "./index",
   "keywords": [
     "d3",
-    "circle",
     "chart",
     "graph"
   ],
   "dependencies": {
-    "d3": "^4.2.1",
-    "eventemitter3": "^1.2.0",
-    "lodash": "^4.15.0"
+    "d3": "^4.2.5",
+    "eventemitter3": "^2.0.0",
+    "lodash": "^4.16.1"
   },
   "devDependencies": {
     "babel-core": "^6.13.2",
@@ -40,6 +40,7 @@
     "eslint-plugin-import": "^1.13.0",
     "eslint-plugin-jsx-a11y": "^2.1.0",
     "eslint-plugin-react": "^6.0.0",
+    "highlight.js": "^9.7.0",
     "koa": "^2.0.0-alpha.5",
     "koa-static-serve": "^2.0.9",
     "moment": "^2.14.1",

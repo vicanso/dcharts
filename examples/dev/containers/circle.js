@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Circle from '../../lib/circle';
+import Circle from '../../../lib/circle';
 
 export default class CircleView extends Component {
   componentDidMount() {

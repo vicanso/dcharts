@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Axis from '../../lib/axis';
+import Axis from '../../../lib/axis';
 
 export default class AxisView extends Component {
   componentDidMount() {

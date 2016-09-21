@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Pie from '../../lib/pie';
+import Pie from '../../../lib/pie';
 
 export default class PieView extends Component {
   componentDidMount() {

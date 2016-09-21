@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Legend from '../../lib/legend';
+import Legend from '../../../lib/legend';
 
 export default class LegendView extends Component {
   componentDidMount() {

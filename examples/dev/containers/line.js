@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import * as _ from 'lodash';
-import { Bar } from '../..';
+import Line from '../../../lib/line';
 
-export default class BarView extends Component {
+export default class LineView extends Component {
   componentDidMount() {
     const refs = this.refs;
 
-    const defaultBar = new Bar(refs.defaultBar);
-    defaultBar.set('xAxis.categories', [
+    const defaultLine = new Line(refs.defaultLine);
+
+    defaultLine.set('xAxis.categories', [
       'Jan',
       'Feb',
       'Mar',
@@ -25,7 +26,7 @@ export default class BarView extends Component {
     .set('yAxis.width', 40)
     .set('yAxis.title.text', 'Accounting(%)');
 
-    defaultBar.render([
+    defaultLine.render([
       {
         name: 'Chrome',
         data: [8.2, 7.8, 9.3, 10.5, 12.1, 13.8, 16.7, 25.3, 20.2, 18.4, 17.1, 15.4],
@@ -40,21 +41,21 @@ export default class BarView extends Component {
       },
     ]);
 
-    const liveUpdateBar = new Bar(refs.liveUpdateLine);
+    const liveUpdateLine = new Line(refs.liveUpdateLine);
     let date = moment().add(-365, 'day');
     const dateList = [date.format('MM-DD')];
     const dataList = [
       {
         name: 'GZ',
-        data: [_.random(3, 5)],
+        data: [_.random(0, 5)],
       },
       {
         name: 'CH',
-        data: [_.random(3, 5)],
+        data: [_.random(0, 5)],
       },
       {
         name: 'SZ',
-        data: [_.random(3, 5)],
+        data: [_.random(0, 5)],
       },
     ];
     for (let i = 0; i < 10; i++) {
@@ -62,14 +63,14 @@ export default class BarView extends Component {
       dateList.push(date.format('MM-DD'));
       _.forEach(dataList, item => item.data.push(_.last(item.data) + _.random(0, 5)));
     }
-    liveUpdateBar.set('title.text', '降雨量')
+    liveUpdateLine.set('title.text', '降雨量')
       .set('xAxis.categories', dateList);
-    liveUpdateBar.render(dataList);
+    liveUpdateLine.render(dataList);
     this.updateTimer = setInterval(() => {
       date = date.add(1, 'day');
       dateList.push(date.format('MM-DD'));
       _.forEach(dataList, item => item.data.push(_.last(item.data) + _.random(0, 5)));
-      liveUpdateBar.update(dateList, dataList);
+      liveUpdateLine.update(dateList, dataList);
     }, 5000);
   }
   componentWillUnmount() {
@@ -77,21 +78,21 @@ export default class BarView extends Component {
   }
   render() {
     return (
-      <div className="stackCotainer pure-g">
-      <h2 className="pure-u-1">Bar Examples</h2>
-      <section className="pure-u-1-2 chartSection">
-        <svg
-          ref="defaultBar"
-        >
-        </svg>
-      </section>
-      <section className="pure-u-1-2 chartSection">
-        <svg
-          ref="liveUpdateLine"
-        >
-        </svg>
-      </section>
+      <div className="legendCotainer pure-g">
+        <h2 className="pure-u-1">Line Examples</h2>
+        <section className="pure-u-1-2 chartSection">
+          <svg
+            ref="defaultLine"
+          >
+          </svg>
+        </section>
+        <section className="pure-u-1-2 chartSection">
+          <svg
+            ref="liveUpdateLine"
+          >
+          </svg>
+        </section>
       </div>
-    );
+    )
   }
 }
