@@ -2,11 +2,11 @@ const Koa = require('koa');
 const path = require('path');
 const app = new Koa();
 const serve = require('koa-static-serve');
-const staticPath = path.join(__dirname, './examples');
+const staticPath = __dirname;
 const fs = require('fs');
 function getHtml(file) {
   const promise = new Promise((resolve, reject) => {
-    fs.readFile(path.join(__dirname, `./examples/${file}`), (err, buf) => {
+    fs.readFile(path.join(__dirname, `./assets/${file}`), (err, buf) => {
       if (err) {
         return reject(err);
       }
@@ -24,10 +24,7 @@ app.use(ctx => {
   if (ctx.status !== 404) {
     return ;
   }
-  if (ctx.url.indexOf('/dev') === 0) {
-    return getHtml('dev/index.html').then(html => ctx.body = html);
-  }
-  return getHtml('app/index.html').then(html => ctx.body = html);
+  return getHtml('index.html').then(html => ctx.body = html);
 });
 const port = process.env.PORT || 10000;
 app.listen(port);

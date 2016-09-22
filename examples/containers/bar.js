@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { Line } from '../../..';
+import { Bar } from 'dcharts';
 import hljs from 'highlight.js';
 
-export default class LiveView extends Component {
+export default class BarView extends Component {
   componentDidMount() {
     const refs = this.refs;
 
-    const line = new Line(refs.line);
+    const bar = new Bar(refs.bar);
 
-    line.set('xAxis.categories', [
+    bar.set('xAxis.categories', [
       'Jan',
       'Feb',
       'Mar',
@@ -44,14 +44,14 @@ export default class LiveView extends Component {
     return (
       <div>
         <svg
-          ref="line"
+          ref="bar"
         />
         <pre
           ref="code"
         >{`
-  const line = new Line(svgDom);
+  const bar = new Bar(svgDom);
 
-  line.set('xAxis.categories', [
+  bar.set('xAxis.categories', [
     'Jan',
     'Feb',
     'Mar',
@@ -80,6 +80,7 @@ export default class LiveView extends Component {
     name: 'London',
     data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8],
   }]);
+
         `}</pre>
       </div>
     );

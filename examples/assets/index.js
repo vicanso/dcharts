@@ -4,10 +4,10 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route } from 'react-enroute';
 
-import CircleView from './containers/circle';
-import PieView from './containers/pie';
-import LineView from './containers/line';
-import BarView from './containers/bar';
+import CircleView from '../containers/circle';
+import PieView from '../containers/pie';
+import LineView from '../containers/line';
+import BarView from '../containers/bar';
 
 class App extends Component {
   constructor(props) {
@@ -52,7 +52,7 @@ class App extends Component {
     });
     return (
       <div className="navContainer">
-        <div className="logo">D-Charts</div>
+        <div className="logo">dCharts</div>
         <div className="title">chart examples</div>
         <ul className="chartExamples">{arr}</ul>
       </div>

@@ -1,6 +1,13 @@
-# D-Charts
+# dCharts
 
 A powerful charting and visualization library is based on d3.
+
+
+## Installation
+
+```bash
+$ npm i dcharts
+```
 
 ## Examples
 
@@ -26,6 +33,8 @@ Bar :)
 Build:
 
 ```
+$ cd examples
+$ npm i
 $ npm run build
 ```
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Circle } from '../../..';
+import { Circle } from 'dcharts';
 import hljs from 'highlight.js';
 
 export default class CircleView extends Component {

@@ -1,29 +1,39 @@
 import React, { Component } from 'react';
-import { Bar } from '../../..';
+import { Line } from 'dcharts';
 import hljs from 'highlight.js';
 
-export default class BarView extends Component {
+export default class LiveView extends Component {
   componentDidMount() {
     const refs = this.refs;
 
-    const bar = new Bar(refs.bar);
-
-    bar.set('xAxis.categories', [
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May',
-      'Jun',
-      'Jul',
-      'Aug',
-      'Sep',
-      'Oct',
-      'Nov',
-      'Dec',
-    ]).set('title.text', 'Monthly Average Temperature')
-    .set('yAxis.width', 40)
-    .set('yAxis.title.text', 'Temperature (°C)')
+    const line = new Line(refs.line);
+    line.set({
+      xAxis: {
+        categories: [
+          'Jan',
+          'Feb',
+          'Mar',
+          'Apr',
+          'May',
+          'Jun',
+          'Jul',
+          'Aug',
+          'Sep',
+          'Oct',
+          'Nov',
+          'Dec',
+        ],
+      },
+      title: {
+        text: 'Monthly Average Temperature',
+      },
+      yAxis: {
+        width: 40,
+        title: {
+          text: 'Temperature (°C)',
+        },
+      },
+    })
     .render([{
       name: 'Tokyo',
       data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6],
@@ -44,14 +54,14 @@ export default class BarView extends Component {
     return (
       <div>
         <svg
-          ref="bar"
+          ref="line"
         />
         <pre
           ref="code"
         >{`
-  const bar = new Bar(svgDom);
+  const line = new Line(svgDom);
 
-  bar.set('xAxis.categories', [
+  line.set('xAxis.categories', [
     'Jan',
     'Feb',
     'Mar',
@@ -80,7 +90,6 @@ export default class BarView extends Component {
     name: 'London',
     data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8],
   }]);
-
         `}</pre>
       </div>
     );

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Pie } from '../../..';
+import { Pie } from 'dcharts';
 import hljs from 'highlight.js';
 
 export default class PieView extends Component {

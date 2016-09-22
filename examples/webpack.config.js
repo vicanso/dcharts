@@ -3,19 +3,16 @@ const webpack = require('webpack');
 module.exports = {
   entry: {
     vendor: [
-      "lodash",
-      "eventemitter3",
-      "d3",
+      "dcharts",
       "react",
       "react-dom",
       "react-enroute",
       "moment",
     ],
-    dev: "./examples/dev/index.js",
-    app: "./examples/app/index.js",
+    app: "./assets/index.js",
   },
   output: {
-    path: __dirname + '/examples',
+    path: __dirname + '/assets',
     filename: 'bundle.[name].js',
   },
   module: {
