@@ -39,9 +39,16 @@ export default class PieView extends Component {
   render() {
     return (
       <div>
-        <svg
-          ref="pie"
-        />
+        <div
+          style={{
+            margin: 'auto',
+            'max-width': '420px',
+          }}
+        >
+          <svg
+            ref="pie"
+          />
+        </div>
         <pre
           ref="code"
         >{`

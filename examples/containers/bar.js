@@ -43,9 +43,16 @@ export default class BarView extends Component {
   render() {
     return (
       <div>
-        <svg
-          ref="bar"
-        />
+        <div
+          style={{
+            margin: 'auto',
+            'max-width': '1000px',
+          }}
+        >
+          <svg
+            ref="bar"
+          />
+        </div>
         <pre
           ref="code"
         >{`

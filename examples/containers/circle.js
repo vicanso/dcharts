@@ -14,9 +14,16 @@ export default class CircleView extends Component {
   render() {
     return (
       <div>
-        <svg
-          ref="circle"
-        />
+        <div
+          style={{
+            margin: 'auto',
+            'max-width': '400px',
+          }}
+        >
+          <svg
+            ref="circle"
+          />
+        </div>
         <pre
           ref="code"
         >{`

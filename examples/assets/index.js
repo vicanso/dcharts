@@ -78,6 +78,12 @@ class App extends Component {
       <BarView />
     );
   }
+  renderIndexview() {
+    return (
+      <div>
+      </div>
+    );
+  }
   render() {
     const { state } = this;
     return (
@@ -100,6 +106,10 @@ class App extends Component {
             <Route
               path="/bar"
               component={() => this.renderBarView()}
+            />
+            <Route
+              path="*"
+              component={() => this.renderIndexview()}
             />
           </Router>
         </div>

@@ -53,9 +53,16 @@ export default class LiveView extends Component {
   render() {
     return (
       <div>
-        <svg
-          ref="line"
-        />
+        <div
+          style={{
+            margin: 'auto',
+            'max-width': '1000px',
+          }}
+        >
+          <svg
+            ref="line"
+          />
+        </div>
         <pre
           ref="code"
         >{`
