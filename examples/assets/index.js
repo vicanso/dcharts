@@ -53,7 +53,6 @@ class App extends Component {
     return (
       <div className="navContainer">
         <div className="logo">dCharts</div>
-        <div className="title">chart examples</div>
         <ul className="chartExamples">{arr}</ul>
       </div>
     );

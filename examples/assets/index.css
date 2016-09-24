@@ -28,12 +28,6 @@ html, body {
   line-height: 3em;
   text-align: center;
 }
-.navContainer .title {
-  color: #6f7b89;
-  font-size: 16px;
-  line-height: 32px;
-  text-indent: 10px;
-}
 .navContainer .chartExamples {
   margin: 0;
   padding: 0;

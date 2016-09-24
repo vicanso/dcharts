@@ -48,23 +48,18 @@ $ npm start
 
 ### dcharts
 
-- `dCharts.defaults` 用于设置各图表的默认属性
+* [dCharts.defaults](https://github.com/vicanso/dcharts/blob/master/md/defaults.md) 用于设置各图表的默认属性
 
-- `dCharts.Circle` 图表Circle的构建类
+* [dCharts.Circle](https://github.com/vicanso/dcharts/blob/master/md/circle.md) 图表Circle
 
-- `dCharts.Line` 图表Line的构建类
+* [dCharts.Line](https://github.com/vicanso/dcharts/blob/master/md/line.md) 图表Line
 
-- `dCharts.Pie` 图表Pie的构建类
+* [dCharts.Pie](https://github.com/vicanso/dcharts/blob/master/md/pie.md) 图表Pie
 
-- `dCharts.Bar` 图表Bar的构建类
+* [dCharts.Bar](https://github.com/vicanso/dcharts/blob/master/md/bar.md) 图表Bar
 
-- `dCharts.d3` d3
-
-### Resources
-
-* [defaults](https://github.com/vicanso/dcharts/blob/master/md/defaults.md)
+* [dCharts.d3](https://github.com/d3/d3) d3
 
 ## License
 
 MIT
-
