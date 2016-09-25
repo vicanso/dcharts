@@ -56,7 +56,7 @@ export default class LiveView extends Component {
         <div
           style={{
             margin: 'auto',
-            'max-width': '1000px',
+            maxWidth: '1000px',
           }}
         >
           <svg

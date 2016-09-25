@@ -50,6 +50,8 @@ $ npm start
 
 * [dCharts.defaults](https://github.com/vicanso/dcharts/blob/master/md/defaults.md) 用于设置各图表的默认属性
 
+* [dCharts.Chart](https://github.com/vicanso/dcharts/blob/master/md/chart.md) 各图表构造函数的基类
+
 * [dCharts.Circle](https://github.com/vicanso/dcharts/blob/master/md/circle.md) 图表Circle
 
 * [dCharts.Line](https://github.com/vicanso/dcharts/blob/master/md/line.md) 图表Line

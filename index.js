@@ -1,3 +1,4 @@
+import Base from './lib/chart';
 import C from './lib/circle';
 import L from './lib/line';
 import P from './lib/pie';
@@ -5,6 +6,7 @@ import B from './lib/bar';
 import * as Defaults from './lib/defaults';
 import * as d from 'd3';
 export { version } from './lib/util';
+export const Chart = Base;
 export const Circle = C;
 export const Line = L;
 export const Pie = P;

@@ -28,11 +28,11 @@ html, body {
   line-height: 3em;
   text-align: center;
 }
-.navContainer .chartExamples {
+.navContainer ul {
   margin: 0;
   padding: 0;
 }
-.navContainer .chartExamples a {
+.navContainer ul a {
   color: #6f7b89;
   font-size: 18px;
   line-height: 48px;
@@ -40,7 +40,7 @@ html, body {
   display: block;
   text-decoration: none;
 }
-.navContainer .chartExamples a.active {
+.navContainer ul a.active {
   background-color: #2d343d;
   color: #fff;
 }
@@ -51,4 +51,10 @@ html, body {
 .chartContainer svg {
   width: 100%;
   margin: 20px auto;
+}
+.chartExamples .preview {
+  display: block;
+}
+.chartExamples .preview .name {
+  text-align: center;
 }

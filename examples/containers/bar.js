@@ -8,22 +8,33 @@ export default class BarView extends Component {
 
     const bar = new Bar(refs.bar);
 
-    bar.set('xAxis.categories', [
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May',
-      'Jun',
-      'Jul',
-      'Aug',
-      'Sep',
-      'Oct',
-      'Nov',
-      'Dec',
-    ]).set('title.text', 'Monthly Average Temperature')
-    .set('yAxis.width', 40)
-    .set('yAxis.title.text', 'Temperature (°C)')
+    bar.set({
+      xAxis: {
+        categories: [
+          'Jan',
+          'Feb',
+          'Mar',
+          'Apr',
+          'May',
+          'Jun',
+          'Jul',
+          'Aug',
+          'Sep',
+          'Oct',
+          'Nov',
+          'Dec',
+        ],
+      },
+      title: {
+        text: 'Monthly Average Temperature',
+      },
+      yAxis: {
+        width: 40,
+        title: {
+          text: 'Temperature (°C)',
+        },
+      },
+    })
     .render([{
       name: 'Tokyo',
       data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6],
@@ -46,7 +57,7 @@ export default class BarView extends Component {
         <div
           style={{
             margin: 'auto',
-            'max-width': '1000px',
+            maxWidth: '1000px',
           }}
         >
           <svg
@@ -58,22 +69,33 @@ export default class BarView extends Component {
         >{`
   const bar = new Bar(svgDom);
 
-  bar.set('xAxis.categories', [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec',
-  ]).set('title.text', 'Monthly Average Temperature')
-  .set('yAxis.width', 40)
-  .set('yAxis.title.text', 'Temperature (°C)')
+  bar.set({
+    xAxis: {
+      categories: [
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec',
+      ],
+    },
+    title: {
+      text: 'Monthly Average Temperature',
+    },
+    yAxis: {
+      width: 40,
+      title: {
+        text: 'Temperature (°C)',
+      },
+    },
+  })
   .render([{
     name: 'Tokyo',
     data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6],

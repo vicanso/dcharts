@@ -42,7 +42,7 @@ export default class PieView extends Component {
         <div
           style={{
             margin: 'auto',
-            'maxWidth': '820px',
+            maxWidth: '820px',
           }}
         >
           <svg

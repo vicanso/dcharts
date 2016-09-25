@@ -14,19 +14,26 @@ class App extends Component {
     super(props);
     const chartTypeList = ['Circle', 'Pie', 'Line', 'Bar'];
     const pathname = location.pathname;
-    const active = _.findIndex(chartTypeList, name => pathname === `/${name.toLowerCase()}`);
+    const active = _.findIndex(chartTypeList, name => pathname.indexOf(`/${name.toLowerCase()}`) === 0);
     this.state = {
       chartTypeList,
       active,
       location: pathname,
     };
+
+    window.onpopstate = () => {
+      this.goTo(location.pathname, true);
+    };
   }
-  goTo(name, i) {
-    const url = `/${name.toLowerCase()}`;
-    history.pushState({}, name, url);
+  goTo(url, isBack) {
+    const chartTypeList = this.state.chartTypeList;
+    const active = _.findIndex(chartTypeList, name => url.indexOf(`/${name.toLowerCase()}`) === 0);
+    if (!isBack) {
+      history.pushState({}, chartTypeList[active], url);
+    }
     this.setState({
       location: url,
-      active: i,
+      active,
     });
   }
   renderNav() {
@@ -42,7 +49,7 @@ class App extends Component {
             href="javascript:;"
             onClick={e => {
               e.preventDefault();
-              this.goTo(name, i);
+              this.goTo(`/${name.toLowerCase()}/examples`);
             }}
           >
             {name}
@@ -53,13 +60,16 @@ class App extends Component {
     return (
       <div className="navContainer">
         <div className="logo">dCharts</div>
-        <ul className="chartExamples">{arr}</ul>
+        <ul>{arr}</ul>
       </div>
     );
   }
   renderCircleView() {
     return (
-      <CircleView />
+      <CircleView
+        location={this.state.location}
+        goTo={this.goTo.bind(this)}
+      />
     );
   }
   renderPieView() {
@@ -91,19 +101,19 @@ class App extends Component {
         <div className="chartContainer">
           <Router {...state}>
             <Route
-              path="/circle"
+              path="/circle/*"
               component={() => this.renderCircleView()}
             />
             <Route
-              path="/pie"
+              path="/pie/*"
               component={() => this.renderPieView()}
             />
             <Route
-              path="/line"
+              path="/line/*"
               component={() => this.renderLineView()}
             />
             <Route
-              path="/bar"
+              path="/bar/*"
               component={() => this.renderBarView()}
             />
             <Route
