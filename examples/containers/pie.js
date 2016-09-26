@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Pie } from 'dcharts';
 import hljs from 'highlight.js';
+import ChartView from './chart';
 
-export default class PieView extends Component {
+class BasicPie extends Component {
   componentDidMount() {
     const refs = this.refs;
-    const pie = new Pie(refs.pie);
-    pie.set('title.text', 'Browser Accounting')
+    const pie = new Pie(refs.svg);
+    pie.set('title.text', 'Browser Share')
       .render([
         {
           name: 'IE',
@@ -33,7 +34,6 @@ export default class PieView extends Component {
           value: 10,
         },
       ]);
-
     hljs.highlightBlock(refs.code);
   }
   render() {
@@ -46,14 +46,14 @@ export default class PieView extends Component {
           }}
         >
           <svg
-            ref="pie"
+            ref="svg"
           />
         </div>
         <pre
           ref="code"
         >{`
   const pie = new Pie(svgDom);
-  pie.set('title.text', 'Browser Accounting')
+  pie.set('title.text', 'Browser Share')
     .render([
       {
         name: 'IE',
@@ -83,5 +83,24 @@ export default class PieView extends Component {
         `}</pre>
       </div>
     );
+  }
+}
+
+export default class PieView extends ChartView {
+  constructor(props) {
+    super(props);
+    this.state = {
+      previewList: [
+        {
+          url: '/basic',
+          name: 'Basic Pie',
+          pic: '/assets/pics/basic-pie.png',
+          component: BasicPie,
+        },
+      ],
+    };
+  }
+  render() {
+    return this.renderRouter();
   }
 }

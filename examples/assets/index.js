@@ -3,6 +3,7 @@ import * as _ from 'lodash';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route } from 'react-enroute';
+import hljs from 'highlight.js';
 
 import CircleView from '../containers/circle';
 import PieView from '../containers/pie';
@@ -24,6 +25,9 @@ class App extends Component {
     window.onpopstate = () => {
       this.goTo(location.pathname, true);
     };
+    hljs.configure({
+      languages: ['js'],
+    });
   }
   goTo(url, isBack) {
     const chartTypeList = this.state.chartTypeList;
@@ -69,25 +73,38 @@ class App extends Component {
       <CircleView
         location={this.state.location}
         goTo={this.goTo.bind(this)}
+        urlPrefix={'/circle/examples'}
       />
     );
   }
   renderPieView() {
     return (
-      <PieView />
+      <PieView
+        location={this.state.location}
+        goTo={this.goTo.bind(this)}
+        urlPrefix={'/pie/examples'}
+      />
     );
   }
   renderLineView() {
     return (
-      <LineView />
+      <LineView
+        location={this.state.location}
+        goTo={this.goTo.bind(this)}
+        urlPrefix={'/line/examples'}
+      />
     );
   }
   renderBarView() {
     return (
-      <BarView />
+      <BarView
+        location={this.state.location}
+        goTo={this.goTo.bind(this)}
+        urlPrefix={'/bar/examples'}
+      />
     );
   }
-  renderIndexview() {
+  renderIndexView() {
     return (
       <div>
       </div>
@@ -118,7 +135,7 @@ class App extends Component {
             />
             <Route
               path="*"
-              component={() => this.renderIndexview()}
+              component={() => this.renderIndexView()}
             />
           </Router>
         </div>

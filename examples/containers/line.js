@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Line } from 'dcharts';
 import hljs from 'highlight.js';
+import ChartView from './chart';
 
-export default class LiveView extends Component {
+class BasicLine extends Component {
   componentDidMount() {
     const refs = this.refs;
-
-    const line = new Line(refs.line);
+    
+    const line = new Line(refs.svg);
     line.set({
       xAxis: {
         categories: [
@@ -60,30 +61,40 @@ export default class LiveView extends Component {
           }}
         >
           <svg
-            ref="line"
+            ref="svg"
           />
         </div>
         <pre
           ref="code"
         >{`
   const line = new Line(svgDom);
-
-  line.set('xAxis.categories', [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec',
-  ]).set('title.text', 'Monthly Average Temperature')
-  .set('yAxis.width', 40)
-  .set('yAxis.title.text', 'Temperature (°C)')
+  line.set({
+    xAxis: {
+      categories: [
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec',
+      ],
+    },
+    title: {
+      text: 'Monthly Average Temperature',
+    },
+    yAxis: {
+      width: 40,
+      title: {
+        text: 'Temperature (°C)',
+      },
+    },
+  })
   .render([{
     name: 'Tokyo',
     data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6],
@@ -97,8 +108,28 @@ export default class LiveView extends Component {
     name: 'London',
     data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8],
   }]);
-        `}</pre>
+          `}</pre>
       </div>
     );
+  }
+}
+
+export default class LineView extends ChartView {
+  constructor(props) {
+    super(props);
+    this.state = {
+      previewClass: 'pure-u-1-2',
+      previewList: [
+        {
+          url: '/basic',
+          name: 'Basic Line',
+          pic: '/assets/pics/basic-line.png',
+          component: BasicLine,
+        },
+      ],
+    };
+  }
+  render() {
+    return this.renderRouter();
   }
 }

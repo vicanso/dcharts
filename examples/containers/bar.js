@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Bar } from 'dcharts';
 import hljs from 'highlight.js';
+import ChartView from './chart';
 
-export default class BarView extends Component {
+class BasicBar extends Component {
   componentDidMount() {
     const refs = this.refs;
 
-    const bar = new Bar(refs.bar);
-
+    const bar = new Bar(refs.svg);
     bar.set({
       xAxis: {
         categories: [
@@ -61,14 +61,13 @@ export default class BarView extends Component {
           }}
         >
           <svg
-            ref="bar"
+            ref="svg"
           />
         </div>
         <pre
           ref="code"
         >{`
   const bar = new Bar(svgDom);
-
   bar.set({
     xAxis: {
       categories: [
@@ -109,9 +108,131 @@ export default class BarView extends Component {
     name: 'London',
     data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8],
   }]);
-
-        `}</pre>
+          `}</pre>
       </div>
     );
   }
 }
+
+class CpuUsageBar extends Component {
+  componentDidMount() {
+    const refs = this.refs;
+    const cpus = 48;
+    const categories = ['all'];
+    _.forEach(_.range(0, cpus), i => categories.push(i));
+
+    const getUsageList = () => {
+
+      const data = [];
+      const usage = {
+        name: 'cpu-usage',
+        data: data,
+      };
+      data.push(_.random(0, 50));
+      _.forEach(_.range(0, cpus), i => data.push(_.random(0, 100)));
+      return [usage];
+    };
+
+    const bar = new Bar(refs.svg);
+    bar.set({
+      xAxis: {
+        categories: categories,
+      },
+      title: {
+        text: 'CPU Usage',
+      },
+      yAxis: {
+        max: 100,
+        min: 0,
+      },
+    }).render(getUsageList());
+
+    this.timer = setInterval(() => {
+      bar.update(categories, getUsageList());
+    }, 2000);
+
+    hljs.highlightBlock(refs.code);
+  }
+  componentWillUnmount() {
+    clearInterval(this.timer)
+  }
+  render() {
+    return (
+      <div>
+        <div
+          style={{
+            margin: 'auto',
+            maxWidth: '1000px',
+          }}
+        >
+          <svg
+            ref="svg"
+          />
+        </div>
+        <pre
+          ref="code"
+        >{`
+  const cpus = 48;
+  const categories = ['all'];
+  _.forEach(_.range(0, cpus), i => categories.push(i));
+  const getUsageList = () => {
+
+    const data = [];
+    const usage = {
+      name: 'cpu-usage',
+      data: data,
+    };
+    data.push(_.random(0, 50));
+    _.forEach(_.range(0, cpus), i => data.push(_.random(0, 100)));
+    return [usage];
+  };
+
+  const bar = new Bar(svgDom);
+  bar.set({
+    xAxis: {
+      categories: categories,
+    },
+    title: {
+      text: 'CPU Usage',
+    },
+    yAxis: {
+      max: 100,
+      min: 0,
+    },
+  }).render(getUsageList());
+
+  setInterval(() => {
+    bar.update(categories, getUsageList());
+  }, 2000);
+          `}</pre>
+      </div>
+    );
+  }
+}
+
+export default class BarView extends ChartView {
+  constructor(props) {
+    super(props);
+    this.state = {
+      previewClass: 'pure-u-1-2',
+      previewList: [
+        {
+          url: '/basic',
+          name: 'Basic Bar',
+          pic: '/assets/pics/basic-bar.png',
+          component: BasicBar,
+        },
+        {
+          url: '/cpu-usage',
+          name: 'CPU Usage Bar',
+          pic: '/assets/pics/cpu-usage-bar.png',
+          component: CpuUsageBar,
+        },
+      ],
+    };
+  }
+  render() {
+    return this.renderRouter();
+  } 
+}
+

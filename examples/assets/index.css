@@ -54,6 +54,14 @@ html, body {
 }
 .chartExamples .preview {
   display: block;
+  text-decoration: none;
+  color: #666;
+  font-weight: bolder;
+}
+.chartExamples .preview img {
+  display: block;
+  max-width: 100%;
+  margin: auto;
 }
 .chartExamples .preview .name {
   text-align: center;

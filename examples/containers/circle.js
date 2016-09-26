@@ -1,7 +1,9 @@
+import * as _ from 'lodash';
 import React, { Component } from 'react';
 import { Circle } from 'dcharts';
 import hljs from 'highlight.js';
 import { Router, Route } from 'react-enroute';
+import ChartView from './chart';
 
 class BasicCircle extends Component {
   componentDidMount() {
@@ -40,8 +42,19 @@ class TimingRefreshCircle extends Component {
   componentDidMount() {
     const refs = this.refs;
     const circle = new Circle(refs.svg);
-    circle.set('title.text', 'CPU Usage')
-      .render(0.543);
+    circle.set({
+      title: {
+        text: 'CPU Usage',
+      },
+      style: {
+        label: {
+          fill: '#3d4751',
+        },
+        foreground: {
+          fill: '#3d4751',
+        },
+      },
+    }).render(0.543);
     this.timer = setInterval(function() {
       circle.update(Math.random());
     }, 2000)
@@ -67,8 +80,19 @@ class TimingRefreshCircle extends Component {
           ref="code"
         >{`
   const circle = new Circle(svgDom);
-  circle.set('title.text', 'CPU Usage(Per 2s Update)')
-    .render(0.543);
+  circle.set({
+    title: {
+      text: 'CPU Usage',
+    },
+    style: {
+      label: {
+        fill: '#3d4751',
+      },
+      foreground: {
+        fill: '#3d4751',
+      },
+    },
+  }).render(0.543);
   setInterval(function() {
     circle.update(Math.random());
   }, 2000)
@@ -125,69 +149,33 @@ class HalfCircle extends Component {
   }
 }
 
-export default class CircleView extends Component {
-  renderList() {
-    const {
-      goTo,
-    } = this.props;
-    return (
-      <div className="chartExamples pure-g">
-        <a
-          className="pure-u-1-3 preview"
-          href="javascript:;"
-          onClick={() => {
-            goTo('/circle/examples/basic')
-          }}
-        >
-          <img src="" />
-          <div className="name">Basic Circle</div>
-        </a>
-        <a
-          className="pure-u-1-3 preview"
-          href="javascript:;"
-          onClick={() => {
-            goTo('/circle/examples/timing-refresh')
-          }}
-        >
-          <img src="" />
-          <div className="name">Timing Refresh Circle</div>
-        </a>
-        <a
-          className="pure-u-1-3 preview"
-          href="javascript:;"
-          onClick={() => {
-            goTo('/circle/examples/half')
-          }}
-        >
-          <img src="" />
-          <div className="name">Half Circle</div>
-        </a>
-      </div>
-    );
+export default class CircleView extends ChartView {
+  constructor(props) {
+    super(props);
+    this.state = {
+      previewList: [
+        {
+          url: '/basic',
+          name: 'Basic Circle',
+          pic: '/assets/pics/basic-circle.png',
+          component: BasicCircle,
+        },
+        {
+          url: '/timing-refresh',
+          name: 'Timing Refresh Circle',
+          pic: '/assets/pics/timing-refresh-circle.png',
+          component: TimingRefreshCircle,
+        },
+        {
+          url: '/half',
+          name: 'Half Circle',
+          pic: '/assets/pics/half-circle.png',
+          component: HalfCircle,
+        },
+      ],
+    };
   }
   render() {
-    const props = this.props;
-    return (
-      <div>
-        <Router {...props}>
-          <Route
-            path="/circle/examples/basic"
-            component={BasicCircle}
-          />
-          <Route
-            path="/circle/examples/timing-refresh"
-            component={TimingRefreshCircle}
-          />
-          <Route
-            path="/circle/examples/half"
-            component={HalfCircle}
-          />
-          <Route
-            path="*"
-            component={() => this.renderList()}
-          />
-        </Router>
-      </div>
-    );
+    return this.renderRouter();
   }
 }
