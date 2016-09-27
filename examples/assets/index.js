@@ -9,11 +9,12 @@ import CircleView from '../containers/circle';
 import PieView from '../containers/pie';
 import LineView from '../containers/line';
 import BarView from '../containers/bar';
+import HeatmapView from '../containers/heatmap';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    const chartTypeList = ['Circle', 'Pie', 'Line', 'Bar'];
+    const chartTypeList = ['Circle', 'Pie', 'Line', 'Bar', 'Heatmap'];
     const pathname = location.pathname;
     const active = _.findIndex(chartTypeList, name => pathname.indexOf(`/${name.toLowerCase()}`) === 0);
     this.state = {
@@ -43,8 +44,9 @@ class App extends Component {
   renderNav() {
     const {
       active,
+      chartTypeList,
     } = this.state;
-    const arr = _.map(['Circle', 'Pie', 'Line', 'Bar'], (name, i) => {
+    const arr = _.map(chartTypeList, (name, i) => {
       const cs = `chart ${active === i ? "active": ""}`;
       return (
         <li key={name}>
@@ -104,6 +106,15 @@ class App extends Component {
       />
     );
   }
+  renderHeatmapView() {
+    return (
+      <HeatmapView
+      location={this.state.location}
+        goTo={this.goTo.bind(this)}
+        urlPrefix={'/heatmap/examples'}
+      />
+    );
+  }
   renderIndexView() {
     return (
       <div>
@@ -132,6 +143,10 @@ class App extends Component {
             <Route
               path="/bar/*"
               component={() => this.renderBarView()}
+            />
+            <Route
+              path="/heatmap/*"
+              component={() => this.renderHeatmapView()}
             />
             <Route
               path="*"
