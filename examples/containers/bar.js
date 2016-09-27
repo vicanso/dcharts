@@ -114,7 +114,7 @@ class BasicBar extends Component {
   }
 }
 
-class CpuUsageBar extends Component {
+class TimingRefreshBar extends Component {
   componentDidMount() {
     const refs = this.refs;
     const cpus = 48;
@@ -223,10 +223,10 @@ export default class BarView extends ChartView {
           component: BasicBar,
         },
         {
-          url: '/cpu-usage',
-          name: 'CPU Usage Bar',
-          pic: '/assets/pics/cpu-usage-bar.png',
-          component: CpuUsageBar,
+          url: '/timing-refresh',
+          name: 'Timing Refresh Bar',
+          pic: '/assets/pics/timing-refresh-bar.png',
+          component: TimingRefreshBar,
         },
       ],
     };

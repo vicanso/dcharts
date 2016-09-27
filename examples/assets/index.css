@@ -54,9 +54,12 @@ html, body {
 }
 .chartExamples .preview {
   text-decoration: none;
-  color: #666;
+  color: #1f77b4;
   font-weight: bolder;
   margin-bottom: 30px;
+}
+.chartExamples .preview:hover {
+  color: #2ca02c;
 }
 .chartExamples .preview img {
   display: block;
