@@ -60,6 +60,8 @@ let colors = [
 
 - `endAngle` 圆环的结束角度
 
+- `max` max value
+
 - `ease` ease函数
 
 - `duration` 动画时间
@@ -69,6 +71,8 @@ let colors = [
 - `title.height` 标题的高度
 
 - `title.text` 标题的内容
+
+- `title.dy` 标题的dy设置，默认为20
 
 - `style.background` 圆环的背景style设置
 
@@ -86,6 +90,7 @@ let colors = [
   thickness: 5,
   startAngle: 0,
   endAngle: 2 * Math.PI,
+  max: 1,
   ease: d3.easeLinear,
   duration: 300,
   format: d3.format(`.${d3.precisionFixed(0.01)}%`),

@@ -53,10 +53,10 @@ html, body {
   margin: 20px auto;
 }
 .chartExamples .preview {
-  display: block;
   text-decoration: none;
   color: #666;
   font-weight: bolder;
+  margin-bottom: 30px;
 }
 .chartExamples .preview img {
   display: block;

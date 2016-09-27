@@ -112,9 +112,7 @@ class HalfCircle extends Component {
       },
       startAngle: -Math.PI / 2,
       endAngle: Math.PI / 2,
-    });
-    circle.set('title.text', 'CPU Usage')
-      .render(0.543);
+    }).render(0.543);
     hljs.highlightBlock(refs.code);
   }
   render() {
@@ -140,9 +138,66 @@ class HalfCircle extends Component {
     },
     startAngle: -Math.PI / 2,
     endAngle: Math.PI / 2,
-  });
-  circle.set('title.text', 'CPU Usage')
-    .render(0.543);
+  }).render(0.543);
+        `}</pre>
+    </div>
+    );
+  }
+}
+
+class BigThicknessCircle extends Component {
+  componentDidMount() {
+    const refs = this.refs;
+    const circle = new Circle(refs.svg);
+    const format = v => `${v}km/h`;
+    circle.set({
+      title: {
+        text:'Speed',
+        dy: 140,
+      },
+      startAngle: (-Math.PI / 3) * 2,
+      endAngle: (Math.PI / 3) * 2,
+      thickness: 10,
+      format,
+      max: 230,
+      disabled: {
+        background: true,
+      },
+    }).render(120);
+    hljs.highlightBlock(refs.code);
+  }
+  render() {
+    return (
+      <div>
+        <div
+          style={{
+            margin: 'auto',
+            maxWidth: '400px',
+          }}
+        >
+          <svg
+            ref="svg"
+          />
+        </div>
+        <pre
+          ref="code"
+        >{`
+  const circle = new Circle(svgDom);
+  const format = v => v + "km/h";
+  circle.set({
+    title: {
+      text:'Speed',
+      dy: 140,
+    },
+    startAngle: (-Math.PI / 3) * 2,
+    endAngle: (Math.PI / 3) * 2,
+    thickness: 10,
+    format,
+    max: 230,
+    disabled: {
+      background: true,
+    },
+  }).render(120);
         `}</pre>
     </div>
     );
@@ -171,6 +226,12 @@ export default class CircleView extends ChartView {
           name: 'Half Circle',
           pic: '/assets/pics/half-circle.png',
           component: HalfCircle,
+        },
+        {
+          url: '/big-thickness',
+          name: 'Big Thickness Circle',
+          pic: '/assets/pics/big-thickness-circle.png',
+          component: BigThicknessCircle,
         },
       ],
     };
