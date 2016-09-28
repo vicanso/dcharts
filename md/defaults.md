@@ -362,3 +362,40 @@ let colors = [
   },
 }
 ```
+
+
+### heatmap options
+
+- `row` 行数
+
+- `column` 列数
+
+- `heat.width` 方块宽度
+
+- `heat.height` 方块高度
+
+- `heat.gap` 方块之间间隙
+
+- `colorInterpolate` 颜色渐变函数
+
+- `colors` 颜色渐变的开始、结束颜色
+
+- `opacityRange` 透明度区间
+
+```js
+{
+  row: 6,
+  column: 6,
+  heat: {
+    width: 20,
+    height: 20,
+    gap: 5,
+  },
+  colorInterpolate: 'interpolateHcl',
+  colors: [
+    'rgb(0, 180, 240)',
+    'rgb(243, 42, 100)'
+  ],
+  opacityRange: [0.10, 1],
+}
+```

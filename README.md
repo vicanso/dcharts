@@ -60,6 +60,8 @@ $ npm start
 
 * [dCharts.Bar](https://github.com/vicanso/dcharts/blob/master/md/bar.md) 图表Bar
 
+* [dCharts.Heatmap](https://github.com/vicanso/dcharts/blob/master/md/heatmap.md) 图表Bar
+
 * [dCharts.d3](https://github.com/d3/d3) d3
 
 ## License
