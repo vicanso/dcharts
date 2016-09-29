@@ -376,11 +376,17 @@ let colors = [
 
 - `heat.gap` 方块之间间隙
 
+- `title.height` 标题的高度
+
+- `title.text` 标题的内容
+
 - `colorInterpolate` 颜色渐变函数
 
 - `colors` 颜色渐变的开始、结束颜色
 
 - `opacityRange` 透明度区间
+
+- `style.title` title的style设置
 
 ```js
 {
@@ -391,11 +397,19 @@ let colors = [
     height: 20,
     gap: 5,
   },
+  title: {
+    height: 32,
+    text: '',
+  },
   colorInterpolate: 'interpolateHcl',
-  colors: [
-    'rgb(0, 180, 240)',
-    'rgb(243, 42, 100)'
-  ],
+  colors: colors.slice(0, 2),
   opacityRange: [0.10, 1],
+  style: {
+    title: {
+      color: '#666',
+      'font-size': '16px',
+      fill: '#666',
+    },
+  },
 }
 ```
