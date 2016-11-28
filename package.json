@@ -1,6 +1,6 @@
 {
   "name": "dcharts",
-  "version": "0.0.7",
+  "version": "0.1.0",
   "description": "A powerful charting and visualization library, is based on d3",
   "author": "Tree Xie <vicansocanbico@gmail.com>",
   "repository": {
@@ -23,9 +23,9 @@
     "graph"
   ],
   "dependencies": {
-    "d3": "^4.2.6",
+    "d3": "^4.4.0",
     "eventemitter3": "^2.0.2",
-    "lodash": "^4.16.4"
+    "lodash": "^4.17.2"
   },
   "devDependencies": {
     "eslint": "^3.6.1",

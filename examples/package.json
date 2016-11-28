@@ -5,7 +5,7 @@
     "build": "node node_modules/.bin/webpack --progress",
     "start": "node app"
   },
-  "main": "./index",
+  "main": "./app",
   "keywords": [
     "d3",
     "chart",
