@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import React, { Component } from 'react';
-import { Circle } from 'dcharts';
+import { Circle } from '../..';
 import hljs from 'highlight.js';
 import { Router, Route } from 'react-enroute';
 import ChartView from './chart';

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Heatmap } from 'dcharts';
+import { Heatmap } from '../..';
 import hljs from 'highlight.js';
 import * as _ from 'lodash';
 import ChartView from './chart';
