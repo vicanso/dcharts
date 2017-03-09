@@ -1,6 +1,6 @@
 {
   "name": "dcharts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A powerful charting and visualization library, is based on d3",
   "author": "Tree Xie <vicansocanbico@gmail.com>",
   "repository": {
