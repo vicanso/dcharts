@@ -6,7 +6,7 @@ import ChartView from './chart';
 class BasicLine extends Component {
   componentDidMount() {
     const refs = this.refs;
-    
+
     const line = new Line(refs.svg);
     line.set({
       xAxis: {
@@ -117,7 +117,7 @@ class BasicLine extends Component {
 class CurveCatmullRomLine extends Component {
   componentDidMount() {
     const refs = this.refs;
-    
+
     const line = new Line(refs.svg);
     line.set({
       curve: ['curveCatmullRom.alpha', 0.5],
